@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
+  fromHomePageToCard(){
+    //apiye istek atılacak
+    //1) mevcut shoppingcard çekilecek
+  }
 
+  fromHomePageToAccount(){
+    //
+  }
+  fromCategoriesSectiontoProduct(){
+    console.log("rabia")
+  }
 }
