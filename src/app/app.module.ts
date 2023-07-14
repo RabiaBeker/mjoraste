@@ -7,30 +7,32 @@ import { RegisterComponent } from './register/register.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from "@angular/material/input";
-import {MatCardModule} from "@angular/material/card";
-import {MatButtonModule} from "@angular/material/button";
-import {MatIconModule} from "@angular/material/icon";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatToolbarModule} from "@angular/material/toolbar";
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { PostsComponent } from './posts/posts.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    HomePageComponent
+    HomePageComponent,
+    LoginComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     MatInputModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatToolbarModule
+    FormsModule,
+    HttpClientModule
+
 
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
