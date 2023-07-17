@@ -18,21 +18,33 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatRadioButton, MatRadioModule} from "@angular/material/radio";
 import { NavbarComponent } from './navbar/navbar.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { PostsComponent } from './posts/posts.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     HomePageComponent,
+
     ProductDetailPageComponent,
     CarouselComponent,
     NavbarComponent,
     ShoppingCartComponent
+
+   
+    PostsComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     MatInputModule,
+
     MatCardModule,
     MatButtonModule,
     MatIconModule,
@@ -42,8 +54,14 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     FormsModule,
     ReactiveFormsModule,
     MatRadioModule
+
+    HttpClientModule
+
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
