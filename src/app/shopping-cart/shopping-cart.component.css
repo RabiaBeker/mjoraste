@@ -1,0 +1,40 @@
+.button{
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+.button:focus{
+  outline: none;
+}
+.button:hover{
+  background-color: #f3f3f3;
+}
+.shopping-cart-section {
+  margin-top: 80px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+mat-card{
+  width: 70%;
+  background-color: #f3f3f3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+img {
+  width: 100px;
+  border-radius: 5px;
+}

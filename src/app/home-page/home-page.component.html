@@ -1,25 +1,6 @@
+<app-navbar></app-navbar>
 <div class="container">
-  <div class="header">
-    <div class="title">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <h1 class="title-text">MJORASTE</h1>
-      </button>
-    </div>
-    <div class="search">
-      <input class="search-input" placeholder="Enter the product you are looking for">
-      <button mat-button color="black">
-        <mat-icon>search</mat-icon>
-      </button>
-    </div>
-    <div class="account-navigater-wrapper">
-      <button (click)="fromHomePageToCard()" mat-button style="color: black; background-color: #fff; margin-right: 0.5rem" class="shoppingCard-button">
-        Shopping Card
-      </button>
-      <button (click)="fromHomePageToAccount()" mat-button style="color: black; background-color: #fff" class="account-button">
-        Account
-      </button>
-    </div>
-  </div>
+  <div class="spacer"></div>
   <div class="content">
     <div class="content-one">
       <h1 class="content-item-title">CATEGORIES</h1>
@@ -50,35 +31,36 @@
         </div>
       </div>
     </div>
+    <div class="spacer-two"></div>
     <div class="content-two">
       <h1 class="top-product-title">TOP PRODUCT</h1>
       <div class="categories">
         <div class="categories-section">
-          <button class="categories-button" (click)=fromCategoriesSectiontoProduct()>
+          <button class="categories-button">
             <img src="./assets/image1.jpg" alt="">
             <p class="categories-title">Siyah Elbise</p>
           </button>
         </div>
         <div class="categories-section">
-          <button class="categories-button" (click)=fromCategoriesSectiontoProduct()>
+          <button class="categories-button">
             <img src="./assets/image1.jpg" alt="">
             <p class="categories-title">T-SHIRT</p>
           </button>
         </div>
         <div class="categories-section">
-          <button class="categories-button" (click)=fromCategoriesSectiontoProduct()>
+          <button class="categories-button">
             <img src="./assets/image1.jpg" alt="">
             <p class="categories-title">BLAZER</p>
           </button>
         </div>
         <div class="categories-section">
-          <button class="categories-button" (click)=fromCategoriesSectiontoProduct()>
+          <button class="categories-button">
             <img src="./assets/image1.jpg" alt="">
             <p class="categories-title">SHOES</p>
           </button>
         </div>
         <div class="categories-section">
-          <button class="categories-button" (click)=fromCategoriesSectiontoProduct()>
+          <button class="categories-button">
             <img src="./assets/image1.jpg" alt="">
             <p class="categories-title">SHOES</p>
           </button>
@@ -94,3 +76,4 @@
     </div>
 </div>
 </div>
+<router-outlet></router-outlet>
