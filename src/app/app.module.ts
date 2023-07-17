@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from "@angular/material/input";
 import { LoginComponent } from './login/login.component';
@@ -19,15 +17,12 @@ import { OrderComponent } from './account/order/order.component';
 import { UserComponent } from './account/user/user.component';
 import {MatTableModule} from '@angular/material/table';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-
     LoginComponent,
     ProductsComponent,
-
     AccountComponent,
     OrderComponent,
     UserComponent,
@@ -42,8 +37,6 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatIconModule,
     MatTableModule
-
-
   ],
   providers: [RegisterService],
   bootstrap: [AppComponent]
