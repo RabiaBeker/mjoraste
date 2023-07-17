@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
@@ -22,29 +21,22 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PostsComponent } from './posts/posts.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     HomePageComponent,
-
     ProductDetailPageComponent,
     CarouselComponent,
     NavbarComponent,
     ShoppingCartComponent
-
-   
     PostsComponent
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,
-
     MatCardModule,
     MatButtonModule,
     MatIconModule,
@@ -54,11 +46,7 @@ import { PostsComponent } from './posts/posts.component';
     FormsModule,
     ReactiveFormsModule,
     MatRadioModule
-
     HttpClientModule
-
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]
