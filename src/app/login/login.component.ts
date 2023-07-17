@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginServiceService } from 'app/service/login-service.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { LoginRequestModel } from 'app/model/login-request-model';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
+  loginRequestModel : LoginRequestModel;
+
+  email: string = '';
+
+  password: string = '';
 
   /*private sendUrl: string;
 
@@ -23,22 +30,39 @@ export class LoginComponent {
     this.http.post<String>(this.sendUrl, this.mail);
   }*/
 
-  mail!: String;
+
 
   constructor(
     private route: ActivatedRoute,
       private router: Router,
         private loginService: LoginServiceService) {
 
+          this.loginRequestModel = new LoginRequestModel;
+
   }
 
   onSubmit() {
-    console.log(this.mail);
-    this.loginService.submit(this.mail).subscribe(result => this.goToResult());
+
+    if(this.email != null && this.email!="" && this.password != null && this.password != ""){
+      this.loginRequestModel.email = this.email;
+      this.loginRequestModel.password = this.password;
+
+      console.log(this.loginRequestModel);
+      this.loginService.login(this.loginRequestModel).subscribe(result => this.goToResult());
+    }else{
+      alert("Required fields must be filled out");
+    }
+
+
   }
 
   goToResult() {
     console.log("deneme başarılı");
+    this.router.navigate(['/products']);
+  }
+
+  goToRegister(){
+    this.router.navigate(['/register']);
   }
 
 

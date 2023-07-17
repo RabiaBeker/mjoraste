@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from '../model/user';
+import { LoginRequestModel } from 'app/model/login-request-model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +11,19 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class LoginServiceService {
 
-  private mailUrl: string;
+  private loginUrl: string;
+
+
 
   constructor(private http: HttpClient) {
-    this.mailUrl = 'http://localhost:8081/sendMail';
+    this.loginUrl = 'http://localhost:8081/login';
+
   }
 
 
-  public submit(mail: String) {
-    return this.http.post<String>(this.mailUrl, mail);
+  public login(loginRequestModel:LoginRequestModel) {
+    return this.http.post<LoginRequestModel>(this.loginUrl, loginRequestModel);
   }
+
+
 }

@@ -1,5 +1,5 @@
 <div style="width: 100%; height: 100%; position: fixed;  ">
-  <form>
+  <form (ngSubmit)="onRegister()">
 
     <div class="title">
       <p style="font-weight: bold; margin-left: 1%;">PERSONEL DETAILS</p>
@@ -9,30 +9,30 @@
 
       <div style=" width: 50%; height: 100%; float: left;">
         <div style="margin-top: 20px;">
-          <input class="inputArea" placeholder="NAME"  />
+          <input type="text" id="name" name="name" [(ngModel)]="name" class="inputArea" placeholder="NAME"  />
         </div>
 
         <div style="margin-top: 20px;">
-          <input class="inputArea" placeholder="E-MAIL"  />
+          <input type="email" id="email" name="email" [(ngModel)]="email" class="inputArea" placeholder="E-MAIL"  />
         </div>
 
         <div style="margin-top: 20px;">
-          <input type="password" class="inputArea" placeholder="PASSWORD"  />
+          <input type="password" id="password" name="password" [(ngModel)]="password" class="inputArea" placeholder="PASSWORD"  />
         </div>
 
       </div>
         <div></div>
       <div style="width: 50%; height: 100%; float: left;">
         <div style="margin-top: 20px;">
-          <input class="inputArea" placeholder="SURNAME"  />
+          <input type="text" id="surName" name="surName" [(ngModel)]="surName" class="inputArea" placeholder="SURNAME"  />
         </div>
 
         <div style="margin-top: 20px;">
-          <input class="inputArea" placeholder="PHONE NUMBER"  />
+          <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" class="inputArea" placeholder="PHONE NUMBER"  />
         </div>
 
         <div style="margin-top: 20px;">
-          <input type="password" class="inputArea" placeholder="REPEAT PASSWORD"  />
+          <input type="password" id="passwordAgain" name="passwordAgain" [(ngModel)]="passwordAgain"  class="inputArea" placeholder="REPEAT PASSWORD"  />
         </div>
       </div>
 
