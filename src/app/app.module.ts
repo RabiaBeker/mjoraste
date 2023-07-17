@@ -4,10 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
-import {MatButtonModule} from "@angular/material/button";
-import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {ProductDetailPageComponent} from "./product-detail-page/product-detail-page.component";
@@ -17,9 +14,18 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatRadioButton, MatRadioModule} from "@angular/material/radio";
 import { NavbarComponent } from './navbar/navbar.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from "@angular/material/input";
+import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PostsComponent } from './posts/posts.component';
+import { ProductsComponent } from './products/products.component';
+import { RegisterService } from './service/register.service';
+import { AccountComponent } from './account/account.component';
+import { MatButtonModule} from "@angular/material/button";
+import { MatIconModule} from "@angular/material/icon";
+import { OrderComponent } from './account/order/order.component';
+import { UserComponent } from './account/user/user.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -29,8 +35,12 @@ import { PostsComponent } from './posts/posts.component';
     ProductDetailPageComponent,
     CarouselComponent,
     NavbarComponent,
-    ShoppingCartComponent
-    PostsComponent
+    ShoppingCartComponent,
+    LoginComponent,
+    ProductsComponent,
+    AccountComponent,
+    OrderComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,8 +55,12 @@ import { PostsComponent } from './posts/posts.component';
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    MatRadioModule
-    HttpClientModule
+    MatRadioModule,
+    FormsModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
