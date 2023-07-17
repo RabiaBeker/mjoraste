@@ -38,7 +38,7 @@ import {MatTableModule} from '@angular/material/table';
     MatIconModule,
     MatTableModule
   ],
-  providers: [RegisterService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
