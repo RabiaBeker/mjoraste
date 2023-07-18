@@ -39,6 +39,10 @@ export class HomePageComponent {
     this.router.navigateByUrl(`products/${id}`)
   }
 
+  fromCategoriesSectiontoProductDetail(id:number){
+    this.router.navigateByUrl(`products/detail/${id}`)
+  }
+
 }
 
 export interface categoriesDetail{

@@ -8,6 +8,8 @@ import {Router} from "@angular/router";
 })
 export class NavbarComponent {
 
+  searchInput:string="";
+
   constructor(private router: Router) {
   }
   fromHomeToShoppingCard(){
@@ -16,5 +18,9 @@ export class NavbarComponent {
 
   fromHomeToAccount(){
     this.router.navigateByUrl("account")
+  }
+
+  search(){
+    this.router.navigate([`products/search/${this.searchInput}`]);
   }
 }

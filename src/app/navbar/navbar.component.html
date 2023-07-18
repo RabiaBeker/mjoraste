@@ -6,8 +6,8 @@
       </a>
     </div>
     <div class="search">
-      <input class="search-input" placeholder="Enter the product you are looking for">
-        <mat-icon>search</mat-icon>
+      <input [(ngModel)]="searchInput" class="search-input" placeholder="Enter the product you are looking for">
+        <mat-icon (click)="search()">search</mat-icon>
     </div>
     <div class="account-navigater-wrapper">
       <button mat-button style="color: black; background-color: #fff; margin-right: 0.5rem" class="shoppingCard-button" (click)="fromHomeToShoppingCard()">

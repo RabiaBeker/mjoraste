@@ -10,12 +10,9 @@ export class ProductDetailService {
   private baseUrl = env.apiUrl + '/api/products'
   private activatedRouter: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient ) { }
 
-  ngOnInit() {
-    const productId: number = Number(this.activatedRouter.snapshot.paramMap.get('id'))
-    console.log(productId)
-  }
+
 }
 
 

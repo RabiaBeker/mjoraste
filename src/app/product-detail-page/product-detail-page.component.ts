@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {CarouselImage} from "./carousel/carousel.component";
 import {Router} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-product-detail-page',
@@ -8,6 +9,15 @@ import {Router} from "@angular/router";
   styleUrls: ['./product-detail-page.component.css']
 })
 export class ProductDetailPageComponent {
+
+  constructor(private router: Router,private activatedRouter: ActivatedRoute) {
+  }
+
+  ngOnInit() {
+    const productId: number = Number(this.activatedRouter.snapshot.paramMap.get('id'))
+    console.log(productId)
+  }
+
   email = localStorage.getItem("email")
 
   selectedSize: string = '';
@@ -15,8 +25,7 @@ export class ProductDetailPageComponent {
   sizes: string[] = [
     "XS", "S", "M", "L"
   ]
-  constructor(private router: Router) {
-  }
+
   public slides: CarouselImage[] = [
     { src: "https://picsum.photos/id/237/200/300", alt: "nature1"},
     { src: "https://picsum.photos/seed/picsum/200/300", alt: "nature2"},
