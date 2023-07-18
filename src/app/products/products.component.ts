@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ByProductsId, HomePageService} from "../home-page/home-page.service";
+import {ActivatedRoute} from '@angular/router';
+import {ProductsService} from "./products.service";
+import {GetAllProductByCategoryIdResponse} from "../model/getAllProductByCategoryIdResponse";
 
 @Component({
   selector: 'app-posts',
@@ -9,98 +10,20 @@ import {ByProductsId, HomePageService} from "../home-page/home-page.service";
 })
 export class ProductsComponent {
 
-  constructor(private activatedrouter: ActivatedRoute, private homePageService: HomePageService) {
-    this.jsonObject = <JSON>this.posts;
+  public productsByCategoryId?: GetAllProductByCategoryIdResponse[];
+  public categoryName?: string;
+  constructor(private activatedRouter: ActivatedRoute, private productsService: ProductsService) {
   }
   ngOnInit() {
-    const categoryid:number = Number(this.activatedrouter.snapshot.paramMap.get('id'))
-    console.log(categoryid)
-    this.homePageService.getProductId(categoryid).subscribe((data: ByProductsId) => console.log(data))
+    const categoryId: number = Number(this.activatedRouter.snapshot.paramMap.get('id'))
+    console.log(categoryId)
+    this.productsService.getProductsByCategoryId(categoryId).subscribe((data) => {
+      console.log(data);
+      this.productsByCategoryId = data
+      if (data && data.length > 0) {
+        this.categoryName = data[0].categoryName
+      }
+    })
   }
-
-
-  jsonObject!: JSON;
-
-  posts: any = [
-    {
-      id: 1,
-      name: "john",
-      imageUrl: './assets/mjoraste-img-1.jpg',
-      price:'1000'
-    },
-    {
-      id: 2,
-      name: "Franc",
-      imageUrl: './assets/mjoraste-img-1.jpg',
-      price:'1000'
-    },
-    {
-      id: 3,
-      name: "Andrew",
-      imageUrl: './assets/mjoraste-img-1.jpg',
-      price:'1000'
-    },
-    {
-      id: 11,
-      name: "Mark",
-      imageUrl: './assets/mjoraste-img-1.jpg',
-      price:'1000'
-    },
-    {
-      id: 12,
-      name: "Eric",
-      imageUrl: './assets/mjoraste-img-1.jpg',
-      price:'1000'
-    },
-    {
-      id: 8,
-      name: "Tony",
-      imageUrl: './assets/mjoraste-img-1.jpg',
-      price:'1000'
-    },
-    {
-      id: 222,
-      name: "Tony",
-      imageUrl: './assets/mjoraste-img-1.jpg',
-      price:'1000'
-    },
-    {
-      id: 111,
-      name: "Tony",
-      imageUrl: './assets/mjoraste-img-1.jpg',
-      price:'1000'
-    },
-    {
-      id: 112,
-      name: "Tony",
-      imageUrl: './assets/mjoraste-img-1.jpg',
-      price:'1000'
-    },
-    {
-      id: 113,
-      name: "Tony",
-      imageUrl: './assets/mjoraste-img-1.jpg',
-      price:'1000'
-    },
-    {
-      id: 113,
-      name: "Tony",
-      imageUrl: './assets/mjoraste-img-1.jpg',
-      price:'1000'
-    },
-    {
-      id: 113,
-      name: "Tony",
-      imageUrl: './assets/mjoraste-img-1.jpg',
-      price:'1000'
-    },
-    {
-      id: 113,
-      name: "Tony",
-      imageUrl: './assets/mjoraste-img-1.jpg',
-      price:'1000'
-    }
-  ]
-  id: any;
 
 }
