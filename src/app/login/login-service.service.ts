@@ -16,13 +16,13 @@ export class LoginServiceService {
 
 
   constructor(private http: HttpClient) {
-    this.loginUrl = 'http://localhost:8081/login';
+    this.loginUrl = 'http://localhost:1907/api/auth/login';
 
   }
 
 
-  public login(loginRequestModel:LoginRequestModel) {
-    return this.http.post<LoginRequestModel>(this.loginUrl, loginRequestModel);
+  public login(loginRequestModel:LoginRequestModel): Observable<LoginRequestModel[]> {
+    return this.http.post<LoginRequestModel[]>(this.loginUrl, loginRequestModel);
   }
 
 
