@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoginServiceService } from 'app/service/login-service.service';
+import { LoginServiceService } from 'app/login/login-service.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../model/user';
-import { RegisterService } from '../service/register.service';
+import { RegisterService } from './register.service';
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-register',
@@ -11,48 +12,38 @@ import { RegisterService } from '../service/register.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  user : User;
 
-  email: string = '';
-  name: string = '';
-  surName: string = '';
-  password: string = '';
-  passwordAgain: string='';
-  phoneNumber: string = '';
-
+  // @ViewChild("frm", {static: true}) frm: NgForm;
   constructor(
     private route: ActivatedRoute,
-      private router: Router,
-        private registerService: RegisterService) {
-          this.user = new User();
-  }
+    private router: Router,
+    private registerService: RegisterService) { }
+  onRegister(data: UserInfo) {
+    if(data.email!="" && data.password!=""   && data.phoneNumber!=""  && data.name!=""  && data.surName!="" ){
 
-  onRegister() {
-
-
-    if(this.email!="" && this.password!=""   && this.phoneNumber!=""  && this.name!=""  && this.surName!="" ){
-
-      if(this.password === this.passwordAgain){
-          this.user.email = this.email.trim();
-          this.user.password = this.password.trim();
-          this.user.phoneNumber = this.phoneNumber.trim();
-          this.user.name = this.name.trim();
-          this.user.surName = this.surName.trim();
-
-          console.log(this.user);
-          this.registerService.save(this.user).subscribe(result => this.goToResult());
+      if(data.password === data.passwordAgain){
+          data.email = data.email.trim();
+          data.password = data.password.trim();
+          data.phoneNumber = data.phoneNumber.trim();
+          data.name = data.name.trim();
+          data.surName = data.surName.trim();
+        this.registerService.sendUserInfo(data).subscribe((data) => {
+            console.log(data);
+            this.router.navigateByUrl("/login")
+        })
       }else{
         alert("Passwords do not match");
       }
-
-    }else{
-      alert("Required fields must be filled out");
-    }
-
-
+      }else{
+        alert("Required fields must be filled out");
+      }
   }
-
-  goToResult() {
-    this.router.navigate(['/']);
-  }
+}
+export interface UserInfo {
+  email: string,
+  name: string,
+  surName: string,
+  password: string,
+  passwordAgain: string,
+  phoneNumber: string,
 }

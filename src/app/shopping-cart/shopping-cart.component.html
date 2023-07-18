@@ -8,19 +8,30 @@
   <div class="card">
     <mat-card>
       <div class="select-image">
-        <img src="./assets/image1.jpg" alt="">
+        <img src="./assets/mjoraste-img-1.jpg" alt="">
       </div>
-      <mat-card-header>
-        <mat-card-title>Midi Elbise</mat-card-title>
-        <mat-card-subtitle>Elastik düz yaka elbise. Fiyonklu ince askılı. Buruşuk görünümlü detaylı.</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p>1000TL</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>remove</button>
-      </mat-card-actions>
+      <div class="shoppingcart-content">
+        <mat-card-header>
+          <mat-card-title>Midi Elbise</mat-card-title>
+          <mat-card-subtitle>Elastik düz yaka elbise. Fiyonklu ince askılı. Buruşuk görünümlü detaylı.</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="product-increase">
+            <button class="increase-btn">-</button>
+            <input class="increase-input" type="text" value="1">
+            <button class="increase-btn">+</button>
+          </div>
+          <p class="product-price">1000TL</p>
+          <button class="product-delete-button">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-content>
+      </div>
     </mat-card>
-    <button></button>
+    <div>
+      <p>Toplam fiyat: </p>
+    </div>
+    <button>Sepeti Onayla</button>
   </div>
 </div>
+

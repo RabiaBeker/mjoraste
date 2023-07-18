@@ -5,14 +5,14 @@
     <div class="content-one">
       <h1 class="content-item-title">CATEGORIES</h1>
       <div class="categories">
-        <div class="categories-section" *ngFor="let category of categoriesList">
-          <button class="categories-button" (click)=fromCategoriesSectiontoProduct(1)>
+        <div class="categories-section">
+          <button class="categories-button" (click)=fromCategoriesSectiontoProduct(2)>
             <img src="./assets/mjoraste-img-1.jpg" alt="">
-            <p class="categories-title">{{category.name}}</p>
+            <p class="categories-title">DRESS</p>
           </button>
         </div>
         <div class="categories-section">
-          <button class="categories-button" (click)=fromCategoriesSectiontoProduct(2)>
+          <button class="categories-button" (click)=fromCategoriesSectiontoProduct(4)>
             <img src="./assets/mjoraste-img-3.jpg" alt="">
             <p class="categories-title">T-SHIRT</p>
           </button>
@@ -24,7 +24,7 @@
           </button>
         </div>
         <div class="categories-section">
-          <button class="categories-button" (click)=fromCategoriesSectiontoProduct(4)>
+          <button class="categories-button" (click)=fromCategoriesSectiontoProduct(1)>
             <img src="./assets/mjoraste-img-4.jpg" alt="">
             <p class="categories-title">SHOES</p>
           </button>
@@ -35,7 +35,7 @@
     <div class="content-two">
       <h1 class="top-product-title">TOP PRODUCT</h1>
       <div class="categories">
-        <div class="categories-section" *ngFor="let cat of CATEGORIES">
+        <div class="categories-section">
           <button class="categories-button">
             <img src="./assets/mjoraste-img-4.jpg" alt="">
             <p class="categories-title">Siyah Elbise</p>

@@ -36,10 +36,10 @@ export class HomePageComponent {
   }
 
   fromCategoriesSectiontoProduct(id:number){
+    this.homePageService.getProductId(id).subscribe((data) => console.log(data));
     this.router.navigateByUrl(`products/${id}`)
   }
 
-  protected readonly CATEGORIES = CATEGORIES;
 }
 
 export interface categoriesDetail{

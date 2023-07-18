@@ -3,7 +3,7 @@
 
     <div class="contentMargin">
 
-      <form  (ngSubmit)="onSubmit()" required>
+      <form (ngSubmit)="onSubmit()" required>
       <div style=" width: 55%; height:50px; margin-left:auto; margin-right: auto;  ">
         <p class="title" style="position: absolute; ">LOG IN TO YOUR ACCOUNT</p>
       </div>
@@ -15,7 +15,7 @@
         <input type="text" id="password" name="password" [(ngModel)]="password" class="inputArea"  placeholder="PASSWORD"  />
       </div>
 
-      <button type="submitButton" class="submitButton">LOG IN</button>
+      <button type="submit" class="submitButton">LOG IN</button>
 
       </form>
 
@@ -23,7 +23,7 @@
         <p class="title" style="position: absolute; ">NEED AN ACCOUNT?</p>
       </div>
 
-      <button (click)="goToRegister()" type="submitButton" class="registerButton">REGISTER</button>
+      <button (click)="goToRegister()" type="submit" class="registerButton">REGISTER</button>
 
     </div>
 

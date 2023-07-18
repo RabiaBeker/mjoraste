@@ -19,7 +19,7 @@ import {MatInputModule} from "@angular/material/input";
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component';
-import { RegisterService } from './service/register.service';
+import { RegisterService } from './register/register.service';
 import { AccountComponent } from './account/account.component';
 import { MatButtonModule} from "@angular/material/button";
 import { MatIconModule} from "@angular/material/icon";

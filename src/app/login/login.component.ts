@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoginServiceService } from 'app/service/login-service.service';
+import { LoginServiceService } from 'app/login/login-service.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginRequestModel } from 'app/model/login-request-model';
 
@@ -16,29 +16,11 @@ export class LoginComponent {
   email: string = '';
 
   password: string = '';
-
-  /*private sendUrl: string;
-
-  constructor(private http: HttpClient) {
-    this.sendUrl = 'http://localhost:8081/sendMail';
-  }
-
-
-  mail: string = '';
-  submit(): void {
-    console.log(this.mail);
-    this.http.post<String>(this.sendUrl, this.mail);
-  }*/
-
-
-
   constructor(
     private route: ActivatedRoute,
-      private router: Router,
-        private loginService: LoginServiceService) {
-
-          this.loginRequestModel = new LoginRequestModel;
-
+    private router: Router,
+    private loginService: LoginServiceService) {
+    this.loginRequestModel = new LoginRequestModel;
   }
 
   onSubmit() {
@@ -48,24 +30,34 @@ export class LoginComponent {
       this.loginRequestModel.password = this.password;
 
       console.log(this.loginRequestModel);
-      this.loginService.login(this.loginRequestModel).subscribe(result => this.goToResult());
+      this.loginService.login(this.loginRequestModel).subscribe((data: UserLogin) => {
+        if(data.data === null){
+          alert("your email or password is wrong")
+          this.router.navigateByUrl("/login")
+        } else {
+          console.log(data)
+          this.router.navigateByUrl("/");
+          localStorage.setItem("email", data.data.email);
+          localStorage.setItem("id", data.data.id.toString())
+        }
+      });
     }else{
       alert("Required fields must be filled out");
     }
-
-
   }
-
-  goToResult() {
-    console.log("deneme başarılı");
-    this.router.navigate(['/products']);
-  }
-
   goToRegister(){
     this.router.navigate(['/register']);
   }
 
-
-
-
+}
+export interface UserLogin {
+  data: {
+    email: string,
+    id: number,
+    name: string,
+    phoneNumber: string,
+    surName: string
+  },
+  message: string,
+  success: boolean
 }

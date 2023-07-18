@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { User } from '../model/user';
+import {UserInfo} from "./register.component";
+import {Observable} from "rxjs";
+import {env} from "../../environments/env";
 
 @Injectable({
   providedIn: 'root'
@@ -10,20 +11,14 @@ import { User } from '../model/user';
 @Injectable()
 export class RegisterService {
 
-
-
-  private userSaveUrl: string;
-
-  constructor(private http: HttpClient) {
-
-    "this.userSaveUrl = 'http://localhost:1907/api/auth';"
-    this.userSaveUrl = 'http://localhost:8081/register';
+  userSaveUrl = env.userSaveUrl;
+  constructor(private http: HttpClient) { }
+  public sendUserInfo(user: UserInfo): Observable<UserResponse> {
+    return this.http.post<UserResponse>(this.userSaveUrl, user);
   }
-
-
-
-
-  public save(user: User) {
-    return this.http.post<User>(this.userSaveUrl, user);
-  }
+}
+export interface UserResponse {
+  success: boolean,
+  message: string,
+  data: string
 }

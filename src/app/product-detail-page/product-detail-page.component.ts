@@ -8,6 +8,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./product-detail-page.component.css']
 })
 export class ProductDetailPageComponent {
+  email = localStorage.getItem("email")
+
   selectedSize: string = '';
 
   sizes: string[] = [
@@ -27,7 +29,10 @@ export class ProductDetailPageComponent {
 
   addToShoppingCart(){
     localStorage.setItem('image', this.slides[0].src)
-    this.router.navigateByUrl('shoppingCart')
+    if(this.email){
+      this.router.navigateByUrl('shoppingCart')
+    }
+    this.router.navigateByUrl("/login")
   }
 
 }
