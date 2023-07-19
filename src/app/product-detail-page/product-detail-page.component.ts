@@ -15,12 +15,14 @@ export class ProductDetailPageComponent {
   ngOnInit() {
     const productId: number = Number(this.activatedRouter.snapshot.paramMap.get('id'))
     console.log(productId)
+
+
   }
 
   email = localStorage.getItem("email")
 
   selectedSize: string = '';
-  
+
   selectSize(){
     console.log(this.selectedSize)
   }
@@ -36,7 +38,7 @@ export class ProductDetailPageComponent {
     { src: "https://picsum.photos/200/300?grayscale", alt: "nature3"}
   ]
 
-  
+
 
   addToShoppingCart(){
     localStorage.setItem('image', this.slides[0].src)
