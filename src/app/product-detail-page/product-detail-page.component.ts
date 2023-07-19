@@ -21,6 +21,8 @@ export class ProductDetailPageComponent {
 
   selectedSize: string = '';
 
+
+
   selectSize(){
     console.log(this.selectedSize)
   }
