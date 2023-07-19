@@ -13,7 +13,8 @@ export class UserComponent {
 
   logOut(){
     console.log("here")
-    localStorage.clear;
+    localStorage.clear();
+
     this.router.navigateByUrl("/");
   }
 }

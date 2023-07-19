@@ -18,6 +18,7 @@ export const CATEGORIES = [
 })
 export class HomePageComponent {
 
+
   public categoriesList?: any;
 
   public categoriesImageUrl  = [
@@ -29,6 +30,7 @@ export class HomePageComponent {
     constructor(private router: Router, private homePageService: HomePageService) {
   }
   ngOnInit(){
+
   this.homePageService.getAllCategories().subscribe((data:Categories) => {
     this.categoriesList = data.data;
     console.log(this.categoriesList)
@@ -36,11 +38,11 @@ export class HomePageComponent {
   }
 
   fromCategoriesSectiontoProduct(id:number){
-    this.router.navigateByUrl(`products/${id}`)
+    this.router.navigateByUrl(`products/categoryId/${id}`)
   }
 
   fromCategoriesSectiontoProductDetail(id:number){
-    this.router.navigateByUrl(`products/detail/${id}`)
+    this.router.navigateByUrl(`products/detail/productId/${id}`)
   }
 
 }

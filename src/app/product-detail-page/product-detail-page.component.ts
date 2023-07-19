@@ -17,10 +17,13 @@ export class ProductDetailPageComponent {
     console.log(productId)
   }
 
-  email = localStorage.getItem("email")
+  userId = localStorage.getItem("id");
 
   selectedSize: string = '';
 
+  selectSize(){
+    console.log(this.selectedSize)
+  }
 
   sizes: string[] = [
     "XS", "S", "M", "L"
@@ -33,14 +36,16 @@ export class ProductDetailPageComponent {
     { src: "https://picsum.photos/200/300?grayscale", alt: "nature3"}
   ]
 
-  
+
 
   addToShoppingCart(){
     localStorage.setItem('image', this.slides[0].src)
-    if(this.email){
+    if(this.userId!=null){
       this.router.navigateByUrl('shoppingCart')
+    }else{
+      this.router.navigateByUrl("/login")
     }
-    this.router.navigateByUrl("/login")
+
   }
 
 }
