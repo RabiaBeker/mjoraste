@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoginServiceService } from 'app/login/login-service.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginRequestModel } from 'app/model/login-request-model';
+import {ApiResponse} from "../model/api-response";
+import {LoginResponse} from "../model/loginResponse";
 
 @Component({
   selector: 'app-login',
@@ -30,15 +32,18 @@ export class LoginComponent {
       this.loginRequestModel.password = this.password;
 
       console.log(this.loginRequestModel);
-      this.loginService.login(this.loginRequestModel).subscribe((data: UserLogin) => {
+      this.loginService.login(this.loginRequestModel).subscribe((data: ApiResponse<LoginResponse>) => {
         if(data.data === null){
           alert("your email or password is wrong")
           this.router.navigateByUrl("/login")
         } else {
           console.log(data)
           this.router.navigateByUrl("/");
-          localStorage.setItem("email", data.data.email);
-          localStorage.setItem("id", data.data.id.toString())
+          if (data.data.email && data.data.email !== "") {
+            localStorage.setItem("email", data.data.email);
+          } else if (data.data.id) {
+            localStorage.setItem("id", data.data.id.toString())
+          }
         }
       });
     }else{
@@ -49,15 +54,4 @@ export class LoginComponent {
     this.router.navigate(['/register']);
   }
 
-}
-export interface UserLogin {
-  data: {
-    email: string,
-    id: number,
-    name: string,
-    phoneNumber: string,
-    surName: string
-  },
-  message: string,
-  success: boolean
 }

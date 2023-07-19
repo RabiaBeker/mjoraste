@@ -1,10 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoginServiceService } from 'app/login/login-service.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../model/user';
 import { RegisterService } from './register.service';
-import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-register',
@@ -12,8 +8,6 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-
-  // @ViewChild("frm", {static: true}) frm: NgForm;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
