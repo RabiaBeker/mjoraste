@@ -9,6 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ProductDetailPageComponent {
 
+
   constructor(private router: Router,private activatedRouter: ActivatedRoute) {
   }
 
