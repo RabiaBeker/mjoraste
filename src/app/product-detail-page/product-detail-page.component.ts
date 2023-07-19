@@ -42,10 +42,11 @@ export class ProductDetailPageComponent {
 
   addToShoppingCart(){
     localStorage.setItem('image', this.slides[0].src)
-    if(this.email){
+    if(this.userId!=null){
       this.router.navigateByUrl('shoppingCart')
+    }else{
+      this.router.navigateByUrl("/login")
     }
-    this.router.navigateByUrl("/login")
   }
 
 }
