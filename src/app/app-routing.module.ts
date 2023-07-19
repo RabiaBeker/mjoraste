@@ -30,7 +30,14 @@ const routes: Routes = [
   },
   {
     path:"account", component:AccountComponent
-  }
+  },
+  {
+    path:"products/search/:searchInput", component:ProductsComponent
+  },
+  {
+    path:"products/detail/:id", component:ProductDetailPageComponent
+  },
+
 ];
 
 @NgModule({
