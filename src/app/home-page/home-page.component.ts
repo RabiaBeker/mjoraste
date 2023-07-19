@@ -29,11 +29,15 @@ export class HomePageComponent {
   ]
     constructor(private router: Router, private homePageService: HomePageService) {
   }
+
+  catOneImageUrl : string = "";
+
   ngOnInit(){
 
   this.homePageService.getAllCategories().subscribe((data:Categories) => {
     this.categoriesList = data.data;
-    console.log(this.categoriesList)
+
+   console.log(this.categoriesList);
   })
   }
 

@@ -46,8 +46,10 @@ mat-radio-group{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
   padding: 1rem;
+}
+.product-info{
+  gap: 3rem;
 }
 .product-info-title{
   font-size: 20px;
@@ -71,4 +73,18 @@ button:hover{
   color: white;
 
   transition: color 0.4s
+}
+.amount-input{
+  width: 15px;
+  text-align: center;
+  border-radius: 0;
+  border: 1px solid;
+  font-family: serif;
+}
+.increase-btn{
+  width: 20px;
+  text-align: center;
+  border-radius: 0;
+  border: 1px solid;
+  background-color: white
 }

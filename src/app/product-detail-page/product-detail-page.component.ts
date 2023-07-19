@@ -9,6 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ProductDetailPageComponent {
 
+  numberOfProduct : number = 1;
 
   constructor(private router: Router,private activatedRouter: ActivatedRoute) {
   }
@@ -19,18 +20,6 @@ export class ProductDetailPageComponent {
   }
 
   userId = localStorage.getItem("id");
-
-  selectedSize: string = '';
-
-
-
-  selectSize(){
-    console.log(this.selectedSize)
-  }
-
-  sizes: string[] = [
-    "XS", "S", "M", "L"
-  ]
 
 
   public slides: CarouselImage[] = [
@@ -47,6 +36,22 @@ export class ProductDetailPageComponent {
       this.router.navigateByUrl('shoppingCart')
     }else{
       this.router.navigateByUrl("/login")
+    }
+
+  }
+
+  reduceProductAmount(){
+    if(this.numberOfProduct > 1){
+      this.numberOfProduct = this.numberOfProduct -1;
+    }
+
+  }
+
+  increaseProductAmount(){
+    if(this.numberOfProduct < 3){
+      this.numberOfProduct = this.numberOfProduct + 1;
+    }else{
+      alert("You can add maximum 3 products in one order");
     }
 
   }

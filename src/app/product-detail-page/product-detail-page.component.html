@@ -9,15 +9,11 @@
         <p class="product-info-title">Midi Elbise</p>
         <p class="product-info-price">1000TL</p>
         <p class="product-info-description">Elastik düz yaka elbise. Fiyonklu ince askılı. Buruşuk görünümlü detaylı.</p>
-        <mat-radio-group
-          aria-labelledby="example-radio-group-label"
-          class="example-radio-group"
-          [(ngModel)]="selectedSize">
-          <mat-radio-button (click)="selectSize()" class="example-radio-button" *ngFor="let size of sizes" [value]="size">
-            {{size}}
-          </mat-radio-button>
-        </mat-radio-group>
-        <p style="font-family: Serif; font-size: 15px; margin-top: 0.5rem">Selectes Size: {{selectedSize}}</p>
+        <div class="product-increase">
+          <button class="increase-btn" (click)="reduceProductAmount()">-</button>
+          <input class="amount-input" type="text" value="{{numberOfProduct}}">
+          <button class="increase-btn" (click)="increaseProductAmount()">+</button>
+        </div>
       </div>
       <button mat-button (click)="addToShoppingCart()">Add To Shopping Cart</button>
     </div>
