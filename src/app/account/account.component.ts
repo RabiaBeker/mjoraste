@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-account',
@@ -6,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent {
+
+  constructor(private router: Router) {
+  }
 
   key : String = "orders";
 
@@ -18,4 +22,6 @@ export class AccountComponent {
     this.key = "user";
     console.log("user");
   }
+
+
 }

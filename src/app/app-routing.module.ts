@@ -19,7 +19,7 @@ const routes: Routes = [
     path: "shoppingCart", component: ShoppingCartComponent
   },
   {
-    path:"products/:id", component: ProductsComponent
+    path:"products/categoryId/:id", component: ProductsComponent
   },
   {
     path:"login",component:LoginComponent
@@ -35,7 +35,7 @@ const routes: Routes = [
     path:"products/search/:searchInput", component:ProductsComponent
   },
   {
-    path:"products/detail/:id", component:ProductDetailPageComponent
+    path:"products/detail/productId/:id", component:ProductDetailPageComponent
   },
 
 ];

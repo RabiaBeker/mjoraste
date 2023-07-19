@@ -39,11 +39,17 @@ export class LoginComponent {
         } else {
           console.log(data)
           this.router.navigateByUrl("/");
-          if (data.data.email && data.data.email !== "") {
+
+          let id:any = data.data.id;
+
+          localStorage.setItem("id",id);
+
+          /*if (data.data.email && data.data.email !== "") {
+            console.log(data.data)
             localStorage.setItem("email", data.data.email);
           } else if (data.data.id) {
             localStorage.setItem("id", data.data.id.toString())
-          }
+          }*/
         }
       });
     }else{
