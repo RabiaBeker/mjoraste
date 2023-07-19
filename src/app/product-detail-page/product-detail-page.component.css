@@ -66,3 +66,9 @@ button{
   width: 100%;
   font-family: serif;
 }
+button:hover{
+  background-color: black;
+  color: white;
+
+  transition: color 0.4s
+}

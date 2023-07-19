@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../model/user';
 import { LoginRequestModel } from 'app/model/login-request-model';
-import {UserLogin} from "./login.component";
+import {ApiResponse} from "../model/api-response";
+import {LoginResponse} from "../model/loginResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +20,8 @@ export class LoginServiceService {
 
   }
 
-  public login(loginRequestModel:LoginRequestModel): Observable<UserLogin> {
-    return this.http.post<UserLogin>(this.loginUrl, loginRequestModel);
+  public login(loginRequestModel:LoginRequestModel): Observable<ApiResponse<LoginResponse>> {
+    return this.http.post<ApiResponse<LoginResponse>>(this.loginUrl, loginRequestModel);
   }
-
 
 }

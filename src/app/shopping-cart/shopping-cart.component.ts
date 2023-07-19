@@ -10,4 +10,17 @@ export class ShoppingCartComponent {
   goToShoppingCart(){
     console.log('rabia')
   }
+
+  deleteFromStorage(){
+    console.log("rabia")
+  }
+
+  increaseProductAmount(){
+    //stoktan düşülecek
+    // request yapılacak shopping cart güncellenecek
+  }
+  reduceProductAmount(){
+    //stokk artacak
+    // request yapılacak shopping cart güncellenecek
+  }
 }

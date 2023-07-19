@@ -11,7 +11,7 @@ import {ProductDetailPageComponent} from "./product-detail-page/product-detail-p
 import { CarouselComponent } from './product-detail-page/carousel/carousel.component';
 import {MatSelectModule} from "@angular/material/select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatRadioButton, MatRadioModule} from "@angular/material/radio";
+import { MatRadioModule} from "@angular/material/radio";
 import { NavbarComponent } from './navbar/navbar.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,13 +19,13 @@ import {MatInputModule} from "@angular/material/input";
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component';
-import { RegisterService } from './register/register.service';
 import { AccountComponent } from './account/account.component';
 import { MatButtonModule} from "@angular/material/button";
 import { MatIconModule} from "@angular/material/icon";
 import { OrderComponent } from './account/order/order.component';
 import { UserComponent } from './account/user/user.component';
 import {MatTableModule} from '@angular/material/table';
+import {MatBadgeModule} from "@angular/material/badge";
 
 @NgModule({
   declarations: [
@@ -60,7 +60,8 @@ import {MatTableModule} from '@angular/material/table';
     HttpClientModule,
     MatButtonModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
