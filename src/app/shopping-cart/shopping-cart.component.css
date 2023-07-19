@@ -66,6 +66,21 @@ mat-card-content{
   margin-top: 8rem;
 }
 
+.amount-input{
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  border-radius: 0;
+  border: 1px solid;
+  font-family: serif;
+}
+.increase-btn{
+  width: 20px;
+  text-align: center;
+  border-radius: 0;
+  border: 1px solid;
+  background-color: white
+}
 .product-price{
   font-family: serif;
   font-size: 17px;

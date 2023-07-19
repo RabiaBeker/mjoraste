@@ -14,6 +14,4 @@ export class ShoppingCartComponent {
   deleteFromStorage(){
     console.log("rabia")
   }
-
-
 }

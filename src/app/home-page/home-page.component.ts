@@ -33,7 +33,8 @@ export class HomePageComponent {
 
   this.homePageService.getAllCategories().subscribe((data:Categories) => {
     this.categoriesList = data.data;
-    console.log(this.categoriesList)
+
+   console.log(this.categoriesList);
   })
   }
 

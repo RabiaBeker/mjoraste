@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ProductDetailPageComponent {
 
-
+  numberOfProduct : number = 1;
   constructor(private router: Router,private activatedRouter: ActivatedRoute) {
   }
 
@@ -23,12 +23,12 @@ export class ProductDetailPageComponent {
   sizes: string[] = [
     "XS", "S", "M", "L"
   ]
-
   public slides: CarouselImage[] = [
     { src: "https://picsum.photos/id/237/200/300", alt: "nature1"},
     { src: "https://picsum.photos/seed/picsum/200/300", alt: "nature2"},
     { src: "https://picsum.photos/200/300?grayscale", alt: "nature3"}
   ]
+
   addToShoppingCart(){
     localStorage.setItem('image', this.slides[0].src)
     if(this.userId!=null){
@@ -37,13 +37,21 @@ export class ProductDetailPageComponent {
       this.router.navigateByUrl("/login")
     }
   }
-  increaseProductAmount(){
-    //stoktan düşülecek
-    // request yapılacak shopping cart güncellenecek
-  }
+
   reduceProductAmount(){
-    //stokk artacak
-    // request yapılacak shopping cart güncellenecek
+    if(this.numberOfProduct > 1){
+      this.numberOfProduct = this.numberOfProduct -1;
+    }
+
+  }
+
+  increaseProductAmount(){
+    if(this.numberOfProduct < 3){
+      this.numberOfProduct = this.numberOfProduct + 1;
+    }else{
+      alert("You can add maximum 3 products in one order");
+    }
+
   }
 }
 
