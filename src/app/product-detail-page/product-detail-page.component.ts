@@ -16,13 +16,13 @@ export class ProductDetailPageComponent {
   ngOnInit() {
     const productId: number = Number(this.activatedRouter.snapshot.paramMap.get('id'))
     console.log(productId)
+
+
   }
 
   userId = localStorage.getItem("id");
 
   selectedSize: string = '';
-
-
 
   selectSize(){
     console.log(this.selectedSize)
