@@ -20,7 +20,10 @@ export class ProductDetailPageComponent {
   email = localStorage.getItem("email")
 
   selectedSize: string = '';
-
+  
+  selectSize(){
+    console.log(this.selectedSize)
+  }
 
   sizes: string[] = [
     "XS", "S", "M", "L"
