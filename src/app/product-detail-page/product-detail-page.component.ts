@@ -19,7 +19,7 @@ export class ProductDetailPageComponent {
 
   }
 
-  email = localStorage.getItem("email")
+  userId = localStorage.getItem("id");
 
   selectedSize: string = '';
 
