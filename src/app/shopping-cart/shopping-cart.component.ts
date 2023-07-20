@@ -6,6 +6,8 @@ import { ApiResponse } from 'app/model/api-response';
 import { SpecifyCartItemModel } from 'app/model/SpecifyCartItemModel';
 import { ShoppingCartItem } from 'app/model/shoppingCartItem';
 import { ApiResponss } from 'app/model/api-responss';
+import { PaymentDialogComponent } from './payment-dialog/payment-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -23,7 +25,8 @@ export class ShoppingCartComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private shoppingCardService : ShoppingCartService) {
+    private shoppingCardService : ShoppingCartService,
+    private dialogRef: MatDialog) {
       this.specifyCartModel = new SpecifyCartItemModel;
   }
 
@@ -46,7 +49,7 @@ export class ShoppingCartComponent {
     });
   }
   openPaymentDialog(){
-
+    this.dialogRef.open(PaymentDialogComponent)
   }
 
   deleteFromStorage(cartItemId : number){

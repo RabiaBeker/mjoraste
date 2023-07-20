@@ -21,7 +21,8 @@ export class HomePageComponent {
 
   public categoriesList?: any;
 
-  public categoriesImageUrl  = []
+  public categoriesImageUrl: any  = []
+
     constructor(private router: Router, private homePageService: HomePageService) {
   }
 

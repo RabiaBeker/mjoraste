@@ -7,6 +7,8 @@ import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AccountComponent } from './account/account.component';
+import {PaymentDetailComponent} from "./shopping-cart/payment-detail/payment-detail.component";
+import {AdminPageComponent} from "./admin-page/admin-page.component";
 
 const routes: Routes = [
   {
@@ -37,6 +39,13 @@ const routes: Routes = [
   {
     path:"products/detail/productId/:id", component:ProductDetailPageComponent
   },
+  {
+    path: "payment-detail", component:PaymentDetailComponent
+  },
+  {
+    path: "admin", component: AdminPageComponent
+  }
+
 
 ];
 

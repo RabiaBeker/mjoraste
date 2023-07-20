@@ -52,13 +52,46 @@ export class OrderComponent {
 
 
   ngOnInıt(){
-    this.orderService.getOrders(this.userId).subscribe((data: ApiResponse<Order>) => {
+    this.userId =Number(localStorage.getItem('id'));
 
-      console.log(data);
+    this.orderService.getOrders(this.userId).subscribe((data: any) => {
+
+      // this.orderList.push(data.data);
+
+      console.log(data.data);
+
+      for(let val of this.orderList){
+        console.log(val);
+      }
+
+      /*for(let i = 0 ; i<data.data.length; i++){
+        const orderItem: Order = data.data[i];
+        console.log(orderItem.orderCode);
+
+
+        let myMap = new Map<string, object>();
+
+        myMap.set('position',orderItem.id).set()
+
+      }*/
+
+
+      const list: Order[] = data.data;
+
+      this.dataSource = list.map((order, index) => {
+        //const amount = order.orderItems.
+        return {
+          position: index,
+          createdDate: order.orderDate,
+          id: ''+ order.orderCode,
+          productAmount: order.orderItems.length,
+          totalPrice: order.totalPrice,
+          action: 'cancel'
+        }
+      })
 
 
 
-     // this.orderList.push(data.data);
 
     });
   }
@@ -96,7 +129,7 @@ export class OrderComponent {
         return {
           position: index,
           createdDate: order.orderDate,
-          id: ''+ order.id,
+          id: ''+ order.orderCode,
           productAmount: order.orderItems.length,
           totalPrice: order.totalPrice,
           action: 'cancel'
@@ -108,7 +141,7 @@ export class OrderComponent {
 
     });
 
-    let datas2 : PeriodicElement[]=[
+    /*let datas2 : PeriodicElement[]=[
       {position: 1,createdDate:"11.22.70" ,id: 'Hydrogen', productAmount: 1, totalPrice: 1280, action:'cancel'},
       {position: 2,createdDate:"11.22.70" , id: 'Helium', productAmount: 4, totalPrice: 1375, action:'cancel'},
     ]
@@ -116,7 +149,7 @@ export class OrderComponent {
     this.key="online"
 
     //let dataSource:PeriodicElement[] = this.datas;
-    this.dataSource = datas2;
+    this.dataSource = datas2;*/
 
   }
 

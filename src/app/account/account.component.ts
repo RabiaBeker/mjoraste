@@ -13,6 +13,10 @@ export class AccountComponent {
 
   key : String = "orders";
 
+  ngOnInit(){
+    this.goToOrders();
+  }
+
   goToOrders(){
     this.key = "orders";
     console.log("orders")
