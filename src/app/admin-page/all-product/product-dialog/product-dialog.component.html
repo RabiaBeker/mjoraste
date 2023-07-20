@@ -1,0 +1,38 @@
+<div class="container">
+  <form [formGroup]="productFrm" (ngSubmit)="sendProductInfo()">
+    <div>
+      <mat-form-field>
+        <input  matInput  type="text" value="1">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="color" placeholder="color">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="description" placeholder="description">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="name" placeholder="name">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input matInput formControlName="price" placeholder="price">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="size" placeholder="size">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="stock" placeholder="stock">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>category Id</mat-label>
+        <mat-select [(value)]="selectedCategory">
+          <mat-option *ngFor="let category of categoryId" [value]="category">
+            {{category}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button mat-button>Send</button>
+  </form>
+</div>

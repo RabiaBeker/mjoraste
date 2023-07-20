@@ -32,6 +32,8 @@ import { PaymentDetailComponent } from './shopping-cart/payment-detail/payment-d
 import {MatStepperModule} from "@angular/material/stepper";
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AllProductComponent } from './admin-page/all-product/all-product.component';
+import { AllOrdersComponent } from './admin-page/all-orders/all-orders.component';
+import { ProductDialogComponent } from './admin-page/all-product/product-dialog/product-dialog.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { AllProductComponent } from './admin-page/all-product/all-product.compon
     PaymentDetailComponent,
     AdminPageComponent,
     AllProductComponent,
+    AllOrdersComponent,
+    ProductDialogComponent,
   ],
   imports: [
     BrowserModule,

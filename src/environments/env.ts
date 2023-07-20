@@ -5,4 +5,10 @@ export const env = {
   getAllCategoriesUrl: 'http://localhost:1907/api/categories',
   getProductIdUrl: 'http://localhost:1907/api/products/findByCategoryId/',
   sendUserAddressInfo: 'http://localhost:1907/api/address',
+  getAllProduct: 'http://localhost:1907/api/products',
+  getAllOlders: 'http://localhost:1907/api/orders/getAll',
+  sendProductData: 'http://localhost:1907/api/products',
+  getAboutText: 'http://localhost:1907/api/about'
 }
+
+

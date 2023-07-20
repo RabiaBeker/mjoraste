@@ -38,13 +38,28 @@ export class LoginComponent {
           this.router.navigateByUrl("/login")
         } else {
           console.log(data)
-          this.router.navigateByUrl("/");
 
-          let id:any = data.data.id;
-          let email: any = data.data.email
+          if (data.data.isAdmin === true){
+            this.router.navigateByUrl('admin');
+            let id:any = data.data.id;
+            let email: any = data.data.email
+            let isAdmin: any = data.data.isAdmin
 
-          localStorage.setItem("email", email)
-          localStorage.setItem("id",id);
+            localStorage.setItem("email", email)
+            localStorage.setItem("id",id);
+            localStorage.setItem("isAdmin", isAdmin)
+
+          }else {
+            this.router.navigateByUrl("/");
+
+            let id:any = data.data.id;
+            let email: any = data.data.email
+            let isAdmin: any = data.data.isAdmin
+
+            localStorage.setItem("email", email)
+            localStorage.setItem("id",id);
+            localStorage.setItem("isAdmin", isAdmin)
+          }
         }
       });
     }else{

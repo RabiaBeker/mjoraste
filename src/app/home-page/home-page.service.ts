@@ -7,11 +7,15 @@ import {env} from "../../environments/env";
   providedIn: 'root'
 })
 export class HomePageService {
+  getAboutTextUrl = env.getAboutText
   getAllCategoriesUrl = env.getAllCategoriesUrl;
   constructor(private http: HttpClient) { }
 
   getAllCategories(): Observable<Categories> {
     return this.http.get<Categories>(this.getAllCategoriesUrl)
+  }
+  getAboutText(): Observable<Text[]>{
+    return this.http.get<Text[]>(this.getAboutTextUrl)
   }
 }
 export interface Categories{

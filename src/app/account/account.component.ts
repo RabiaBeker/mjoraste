@@ -10,14 +10,11 @@ export class AccountComponent {
 
   constructor(private router: Router) {
   }
-
   key : String = "orders";
-
   goToOrders(){
     this.key = "orders";
     console.log("orders")
   }
-
   goToUser(){
     this.key = "user";
     console.log("user");

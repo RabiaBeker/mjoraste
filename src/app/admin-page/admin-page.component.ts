@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import {AdminPageService} from "./admin-page.service";
-import {GetAllProductResponse} from "../model/getAllProductResponse";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin-page',
@@ -9,19 +8,23 @@ import {GetAllProductResponse} from "../model/getAllProductResponse";
 })
 export class AdminPageComponent {
 
-  constructor(private adminPageService: AdminPageService) {
+  key: string;
+  isAdmin = localStorage.getItem('isAdmin')
+  constructor(private router:Router) {
   }
-
-  getAllProductfromAllProductPage(){
-    console.log("rabia");
+  ngOnInit(){
+    if(this.isAdmin === 'false'){
+      this.router.navigateByUrl('')
+    }
+  }
+  logOutFromApplication(){
+    this.router.navigateByUrl('login')
+    localStorage.clear()
+  }
+  goToAllProduct(){
+    this.key = "all-product"
   }
   getAllOrders(){
-
-  }
-  getAllUsers(){
-
-  }
-  goToProductPage(){
-
+    this.key = "all-orders"
   }
 }

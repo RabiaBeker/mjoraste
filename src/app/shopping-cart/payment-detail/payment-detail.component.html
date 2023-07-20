@@ -5,19 +5,19 @@
       <form [formGroup]="firstFormGroup" (ngSubmit)="sendCardInfo(firstFormGroup.value)">
         <ng-template matStepLabel>Fill out your credit-card information</ng-template>
         <mat-form-field>
-          <input matInput formControlName="cardNumber" placeholder="Card Number">
+          <input matInput formControlName="cardNumber" placeholder="Card Number" maxlength="16">
         </mat-form-field>
         <mat-form-field>
           <input matInput formControlName="cardOwner" placeholder="Card Owner">
         </mat-form-field>
         <mat-form-field>
-          <input matInput formControlName="mm" placeholder="MM" maxlength="2">
+          <input matInput formControlName="mm" placeholder="MM">
         </mat-form-field>
         <mat-form-field>
-          <input matInput formControlName="vv" placeholder="YY" maxlength="2">
+          <input matInput formControlName="vv" placeholder="YY">
         </mat-form-field>
         <mat-form-field>
-          <input matInput formControlName="cvv" placeholder="CVV" maxlength="3">
+          <input matInput formControlName="cvv" placeholder="CVV">
         </mat-form-field>
         <div>
           <button mat-button matStepperNext>Next</button>
