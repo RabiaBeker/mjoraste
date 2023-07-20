@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Card } from 'app/model/card';
 import { ApiResponse } from 'app/model/api-response';
 import { SpecifyCartItemModel } from 'app/model/SpecifyCartItemModel';
+import { ShoppingCartItem } from 'app/model/shoppingCartItem';
+import { ApiResponss } from 'app/model/api-responss';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -15,6 +17,8 @@ export class ShoppingCartComponent {
   public totalPrice?:number=0;
 
   specifyCartModel : SpecifyCartItemModel;
+
+  cartItemsList : Array<ShoppingCartItem> = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -33,17 +37,23 @@ export class ShoppingCartComponent {
 
       console.log(data);
 
-      console.log(data.data.totalPrice);
-
       this.totalPrice = data.data.totalPrice;
+
+      this.cartItemsList = data.data.cartItems;
+
+
+
     });
   }
   openPaymentDialog(){
 
   }
 
-  deleteFromStorage(){
-
+  deleteFromStorage(cartItemId : number){
+    this.shoppingCardService.deleteCart(cartItemId).subscribe((data: ApiResponss) => {
+      console.log(data);
+      this.ngOnInit();
+    });
   }
 
   goToShoppingCart(){

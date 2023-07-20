@@ -29,7 +29,7 @@ export class ProductDetailService {
 
   public sendProductAndQuantity(cardItemModel:CartItemModel): Observable<ApiCardResponse> {
 
-    return this.http.post<ApiCardResponse>(this.baseUrlCard+`/{userId}/add?userId=${this.userId}`, cardItemModel);
+    return this.http.post<ApiCardResponse>(this.baseUrlCard+`/${this.userId}/add`, cardItemModel);
   }
 
 }
