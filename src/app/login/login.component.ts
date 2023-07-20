@@ -41,15 +41,10 @@ export class LoginComponent {
           this.router.navigateByUrl("/");
 
           let id:any = data.data.id;
+          let email: any = data.data.email
 
+          localStorage.setItem("email", email)
           localStorage.setItem("id",id);
-
-          /*if (data.data.email && data.data.email !== "") {
-            console.log(data.data)
-            localStorage.setItem("email", data.data.email);
-          } else if (data.data.id) {
-            localStorage.setItem("id", data.data.id.toString())
-          }*/
         }
       });
     }else{

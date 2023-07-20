@@ -21,12 +21,6 @@ export class HomePageComponent {
 
   public categoriesList?: any;
 
-  public categoriesImageUrl  = [
-    "./assets/mjoraste-img-1.jpg",
-    "./assets/mjoraste-img-2.jpg",
-    "./assets/mjoraste-img-3.jpg",
-    "./assets/mjoraste-img-4.jpg"
-  ]
     constructor(private router: Router, private homePageService: HomePageService) {
   }
   ngOnInit(){

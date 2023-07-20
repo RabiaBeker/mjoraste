@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { LoginRequestModel } from 'app/model/login-request-model';
 import {ApiResponse} from "../model/api-response";
 import {LoginResponse} from "../model/loginResponse";
+import {env} from "../../environments/env";
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,10 @@ import {LoginResponse} from "../model/loginResponse";
 @Injectable()
 export class LoginServiceService {
 
-  private loginUrl: string;
+  private loginUrl: string = env.loginUrl;
 
 
   constructor(private http: HttpClient) {
-    this.loginUrl = 'http://localhost:1907/api/auth/login';
 
   }
 

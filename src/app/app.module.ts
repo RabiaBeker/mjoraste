@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import {MatCardModule} from "@angular/material/card";
-import {MatFormFieldModule} from "@angular/material/form-field";
+import { MatFormFieldModule} from "@angular/material/form-field";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {ProductDetailPageComponent} from "./product-detail-page/product-detail-page.component";
 import { CarouselComponent } from './product-detail-page/carousel/carousel.component';
@@ -26,6 +26,12 @@ import { OrderComponent } from './account/order/order.component';
 import { UserComponent } from './account/user/user.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatBadgeModule} from "@angular/material/badge";
+import { PaymentDialogComponent } from './shopping-cart/payment-dialog/payment-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { PaymentDetailComponent } from './shopping-cart/payment-detail/payment-detail.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AllProductComponent } from './admin-page/all-product/all-product.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +47,10 @@ import {MatBadgeModule} from "@angular/material/badge";
     AccountComponent,
     OrderComponent,
     UserComponent,
+    PaymentDialogComponent,
+    PaymentDetailComponent,
+    AdminPageComponent,
+    AllProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +71,9 @@ import {MatBadgeModule} from "@angular/material/badge";
     MatButtonModule,
     MatIconModule,
     MatTableModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDialogModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

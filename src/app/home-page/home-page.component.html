@@ -7,7 +7,7 @@
       <div class="categories">
         <div class="categories-section" *ngFor="let category of categoriesList">
           <button class="categories-button" (click)=fromCategoriesSectiontoProduct(category.id)>
-            <img src="./assets/{{category.imageUrl}}" alt="">
+            <img src="./assets/category_images/{{category.imageUrl}}" alt="">
             <p class="categories-title">{{category.name}}</p>
           </button>
         </div>

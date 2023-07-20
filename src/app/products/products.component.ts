@@ -34,6 +34,7 @@ export class ProductsComponent {
           this.productsService.getProductsByCategoryId(categoryId).subscribe((data) => {
             console.log(data);
             this.productsByCategoryId = data
+            console.log(this.productsByCategoryId)
             if (data && data.length > 0) {
               this.categoryName = data[0].categoryName
             }
