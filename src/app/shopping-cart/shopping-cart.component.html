@@ -16,11 +16,6 @@
           <mat-card-subtitle>Elastik düz yaka elbise. Fiyonklu ince askılı. Buruşuk görünümlü detaylı.</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <div class="product-increase">
-            <button class="increase-btn" (click)="reduceProductAmount()">-</button>
-            <input class="amount-input" type="text" value="1">
-            <button class="increase-btn" (click)="increaseProductAmount()">+</button>
-          </div>
           <p class="product-price">1000TL</p>
           <button class="product-delete-button" (click)="deleteFromStorage()">
             <mat-icon>delete</mat-icon>
@@ -38,11 +33,6 @@
           <mat-card-subtitle>Elastik düz yaka elbise. Fiyonklu ince askılı. Buruşuk görünümlü detaylı.</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <div class="product-increase">
-            <button class="increase-btn" (click)="reduceProductAmount()">-</button>
-            <input class="amount-input" type="text" value="1">
-            <button class="increase-btn" (click)="increaseProductAmount()">+</button>
-          </div>
           <p class="product-price">1000TL</p>
           <button class="product-delete-button" (click)="deleteFromStorage()">
             <mat-icon>delete</mat-icon>
@@ -51,9 +41,8 @@
       </div>
     </mat-card>
     <div>
-      <p>Toplam fiyat: </p>
+      <p>Toplam fiyat: {{totalPrice}} </p>
     </div>
-    <button mat-button class="proceedCheckoutButton">Proceed Checkout</button>
+    <button (click)="openPaymentDialog()" mat-button class="proceedCheckoutButton">Proceed Checkout</button>
   </div>
 </div>
-

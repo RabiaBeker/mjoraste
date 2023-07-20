@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import {CarouselImage} from "./carousel/carousel.component";
 import {ActivatedRoute, Router} from "@angular/router";
+import { ProductDetailService } from './product-detail.service';
+import { CartItemModel } from 'app/model/cardItemModel';
+
 
 @Component({
   selector: 'app-product-detail-page',
@@ -9,31 +12,70 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ProductDetailPageComponent {
 
+  cardItemModel : CartItemModel;
+
+  productId:number=0;
+
+  public description?:string="";
+  public name?:string="";
+  public price?:number=0;
+
+  constructor(
+    private router: Router,
+    private activatedRouter: ActivatedRoute,
+    private productDetailService: ProductDetailService
+
+    ) {
+      this.cardItemModel = new CartItemModel;
+     }
+
+
+
   numberOfProduct : number = 1;
-
-  constructor(private router: Router,private activatedRouter: ActivatedRoute) {
-  }
-
-  ngOnInit() {
-    const productId: number = Number(this.activatedRouter.snapshot.paramMap.get('id'))
-    console.log(productId)
-  }
 
   userId = localStorage.getItem("id");
 
+  public slides: CarouselImage[] = []
 
-  public slides: CarouselImage[] = [
-    { src: "https://picsum.photos/id/237/200/300", alt: "nature1"},
-    { src: "https://picsum.photos/seed/picsum/200/300", alt: "nature2"},
-    { src: "https://picsum.photos/200/300?grayscale", alt: "nature3"}
-  ]
+  ngOnInit() {
+    this.productId = Number(this.activatedRouter.snapshot.paramMap.get('id'));
 
 
+    this.productDetailService.getProductsByProductId(this.productId).subscribe((data) => {
+
+
+        this.description = data.description;
+        this.name = data.name;
+        this.price = data.price;
+
+        for(let i = 0; i < 2; i++){
+
+          this.slides.push({src:"../../assets/images/"+data.images?.[i].imageUrl,alt:"nature"});
+        }
+
+
+
+    })
+  }
 
   addToShoppingCart(){
+
+
     localStorage.setItem('image', this.slides[0].src)
+
+
     if(this.userId!=null){
-      this.router.navigateByUrl('shoppingCart')
+
+      this.cardItemModel.productId = this.productId;
+      this.cardItemModel.quantity = this.numberOfProduct;
+
+
+
+      this.productDetailService.sendProductAndQuantity(this.cardItemModel).subscribe((data) => {
+
+        this.router.navigateByUrl('shoppingCart')
+      })
+
     }else{
       this.router.navigateByUrl("/login")
     }
@@ -55,6 +97,8 @@ export class ProductDetailPageComponent {
     }
 
   }
+
+
 
 }
 

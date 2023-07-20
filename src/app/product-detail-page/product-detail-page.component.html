@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+
 <div class="container">
   <div class="row">
     <div class="carousel">
@@ -6,16 +7,17 @@
     </div>
     <div class="image-info">
       <div class="product-info">
-        <p class="product-info-title">Midi Elbise</p>
-        <p class="product-info-price">1000TL</p>
-        <p class="product-info-description">Elastik düz yaka elbise. Fiyonklu ince askılı. Buruşuk görünümlü detaylı.</p>
+        <p class="product-info-title">{{name}}</p>
+        <p class="product-info-price">{{price}}</p>
+        <p class="product-info-description">{{description}}</p>
         <div class="product-increase">
           <button class="increase-btn" (click)="reduceProductAmount()">-</button>
           <input class="amount-input" type="text" value="{{numberOfProduct}}">
           <button class="increase-btn" (click)="increaseProductAmount()">+</button>
         </div>
       </div>
-      <button mat-button (click)="addToShoppingCart()">Add To Shopping Cart</button>
+      <button mat-button (click)="addToShoppingCart()" >Add To Shopping Cart</button>
     </div>
   </div>
 </div>
+
