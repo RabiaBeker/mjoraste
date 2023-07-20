@@ -35,13 +35,13 @@
     <div class="content-two">
       <h1 class="top-product-title">TOP PRODUCT</h1>
       <div class="categories">
-        <div class="categories-section">
-          <button class="categories-button" (click)=fromCategoriesSectiontoProductDetail(1)>
-            <img src="./assets/mjoraste-img-4.jpg" alt="">
-            <p class="categories-title">Siyah Elbise</p>
+        <div class="categories-section" *ngFor="let product of productList">
+          <button class="categories-button" (click)="fromCategoriesSectiontoProductDetail(product.id)">
+            <img src="../../assets/images/{{product.images[0].imageUrl}}" alt="">
+            <p class="categories-title">{{product.name}}</p>
           </button>
         </div>
-        <div class="categories-section">
+        <!--<div class="categories-section">
           <button class="categories-button" (click)=fromCategoriesSectiontoProductDetail(2)>
             <img src="./assets/mjoraste-img-4.jpg" alt="">
             <p class="categories-title">Siyah Elbise</p>
@@ -70,7 +70,7 @@
             <img src="./assets/mjoraste-img-2.jpg" alt="">
             <p class="categories-title">SHOES</p>
           </button>
-        </div>
+        </div>-->
       </div>
   </div>
     <div class="content-three">

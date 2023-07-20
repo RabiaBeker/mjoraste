@@ -25,6 +25,12 @@ export class LoginComponent {
     this.loginRequestModel = new LoginRequestModel;
   }
 
+  ngOnInit(){
+    if(localStorage.getItem('id') != null){
+      this.router.navigateByUrl('');
+    }
+  }
+
   onSubmit() {
 
     if(this.email != null && this.email!="" && this.password != null && this.password != ""){
@@ -43,6 +49,10 @@ export class LoginComponent {
           let id:any = data.data.id;
 
           localStorage.setItem("id",id);
+          localStorage.setItem("email",data.data.email);
+          localStorage.setItem("name",data.data.name);
+          localStorage.setItem("surname",data.data.surName);
+          localStorage.setItem("phoneNumber",data.data.phoneNumber);
 
           /*if (data.data.email && data.data.email !== "") {
             console.log(data.data)

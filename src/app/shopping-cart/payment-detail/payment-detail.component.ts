@@ -39,13 +39,17 @@ export class PaymentDetailComponent {
       paymentTypeId: 1,
       town: data.town
     }
-    this.paymentDetailService.sendUserAddressInfo(payload);
-    this.router.navigateByUrl('account');
+    this.paymentDetailService.sendUserAddressInfo(payload).subscribe((response) => {
+      this.router.navigateByUrl('account');
+    })
   }
+
+  goToAccount(){
+
+  }
+
   createNewOrder(){
     alert("cerated your order, order id: 123456")
     this.router.navigateByUrl('account')
   }
 }
-
-

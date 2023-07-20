@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {ProductsService} from "./products.service";
+import {Products, ProductsService} from "./products.service";
 import {GetAllProductByCategoryIdResponse} from "../model/getAllProductByCategoryIdResponse";
 import {Router} from "@angular/router";
 
@@ -12,7 +12,11 @@ import {Router} from "@angular/router";
 export class ProductsComponent {
 
   public productsByCategoryId?: GetAllProductByCategoryIdResponse[];
+
   public categoryName?: string;
+
+  productsList!:ProductModel[];
+
   constructor(private router: Router,private route: ActivatedRoute,private activatedRouter: ActivatedRoute, private productsService: ProductsService) {
   }
   ngOnInit() {
@@ -27,10 +31,16 @@ export class ProductsComponent {
         if (key != undefined){
           console.log(param['searchInput']);
           //arama kelimesi ile backende sorgu gönder ve products component içinde döndür
+          this.productsService.getProductsBySearchInputId(key).subscribe((data) => {
+            console.log(data);
+            console.log(data.data[0]);
+
+            this.productsList = data.data;
+
+
+          })
         }else{
           const categoryId: number = Number(this.activatedRouter.snapshot.paramMap.get('id'))
-          console.log("here")
-          console.log(categoryId)
           this.productsService.getProductsByCategoryId(categoryId).subscribe((data) => {
             console.log(data);
             this.productsByCategoryId = data
@@ -52,3 +62,19 @@ export class ProductsComponent {
   }
 
 }
+
+export interface ProductModel{
+
+      brandName: string,
+      id: number,
+      images: [
+        {
+          imageUrl: string
+        }
+      ],
+      name: string,
+      price: number
+
+
+}
+

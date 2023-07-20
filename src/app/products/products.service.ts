@@ -18,6 +18,28 @@ export class ProductsService {
     return this.http.get<ApiResponse<GetAllProductByCategoryIdResponse[]>>(this.baseUrl + `/findByCategoryId/${categoryId}`)
       .pipe(map((response) => response.data))
   }
+
+  getProductsBySearchInputId(searchInput:any):Observable<Products>{
+    return this.http.get<Products>(this.baseUrl + `/searchProductByName/${searchInput}`)
+  }
+}
+
+export interface Products{
+  data: [
+    {
+      brandName: string,
+      id: number,
+      images: [
+        {
+          imageUrl: string
+        }
+      ],
+      name: string,
+      price: number
+    }
+  ],
+  message: string,
+  success: boolean
 }
 
 

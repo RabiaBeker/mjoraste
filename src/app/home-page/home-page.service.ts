@@ -8,11 +8,18 @@ import {env} from "../../environments/env";
 })
 export class HomePageService {
   getAllCategoriesUrl = env.getAllCategoriesUrl;
+  getProductsUrl = env.getProducts;
+
   constructor(private http: HttpClient) { }
 
   getAllCategories(): Observable<Categories> {
     return this.http.get<Categories>(this.getAllCategoriesUrl)
   }
+
+  getTopProducts(): Observable<Products>{
+    return this.http.get<Products>(this.getProductsUrl);
+  }
+
 }
 export interface Categories{
   data: [
@@ -20,6 +27,24 @@ export interface Categories{
         id: number,
         name: string
       }
+  ],
+  message: string,
+  success: boolean
+}
+
+export interface Products{
+  data: [
+    {
+      brandName: string,
+      id: number,
+      images: [
+        {
+          imageUrl: string
+        }
+      ],
+      name: string,
+      price: number
+    }
   ],
   message: string,
   success: boolean
