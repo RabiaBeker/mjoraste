@@ -5,7 +5,7 @@
         <button (click)="goToShoppingCart()" class="button">SHOPPING CART</button>
       </div>
   </div>
-  <div class="card"  >
+  <div class="card" *ngIf="cartItemsList.length>0" >
     <mat-card *ngFor="let cartItem of cartItemsList">
       <div class="select-image">
         <img src="./assets/images/{{cartItem.images[0].imageUrl}}" alt="">

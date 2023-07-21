@@ -3,6 +3,10 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {PaymentDetailService} from "./payment-detail.service";
 import {OrdersInfoRequest} from "../../model/ordersRequest";
+import { NavbarComponent } from 'app/navbar/navbar.component';
+import { ApiResponse } from 'app/model/api-response';
+import { Card } from 'app/model/card';
+import { ShoppingCartService } from 'app/shopping-cart/shopping-cart.service';
 
 @Component({
   selector: 'app-payment-detail',
@@ -10,7 +14,7 @@ import {OrdersInfoRequest} from "../../model/ordersRequest";
   styleUrls: ['./payment-detail.component.css']
 })
 export class PaymentDetailComponent {
-  constructor(private _formBuilder: FormBuilder, private router: Router, private paymentDetailService: PaymentDetailService) {}
+  constructor(private _formBuilder: FormBuilder, private router: Router, private paymentDetailService: PaymentDetailService,private shoppingCardService : ShoppingCartService) {}
 
   isEditable = false;
   paymentId = localStorage.getItem('paymentId')
@@ -40,16 +44,23 @@ export class PaymentDetailComponent {
       town: data.town
     }
     this.paymentDetailService.sendUserAddressInfo(payload).subscribe((response) => {
+
+
+      let id:number = Number(localStorage.getItem('id'));
+
+      let size:number=0;
+
+      this.shoppingCardService.getCart(id).subscribe((data: ApiResponse<Card>) => {
+
+        console.log(data.data.cartItems.length);
+        size = data.data.cartItems.length;
+        NavbarComponent.cartItemSize = size;
+      });
+
+      alert("your order has been created")
       this.router.navigateByUrl('account');
     })
   }
 
-  goToAccount(){
 
-  }
-
-  createNewOrder(){
-    alert("cerated your order, order id: 123456")
-    this.router.navigateByUrl('account')
-  }
 }

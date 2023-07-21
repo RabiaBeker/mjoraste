@@ -21,7 +21,8 @@ export class LoginComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private loginService: LoginServiceService) {
+    private loginService: LoginServiceService,
+    ) {
     this.loginRequestModel = new LoginRequestModel;
   }
 
@@ -37,14 +38,11 @@ export class LoginComponent {
       this.loginRequestModel.email = this.email;
       this.loginRequestModel.password = this.password;
 
-      console.log(this.loginRequestModel);
       this.loginService.login(this.loginRequestModel).subscribe((data: ApiResponse<LoginResponse>) => {
         if(data.data === null){
           alert("your email or password is wrong")
           this.router.navigateByUrl("/login")
         } else {
-          console.log(data)
-          this.router.navigateByUrl("/");
 
           let id:any = data.data.id;
 
@@ -54,12 +52,10 @@ export class LoginComponent {
           localStorage.setItem("surname",data.data.surName);
           localStorage.setItem("phoneNumber",data.data.phoneNumber);
 
-          /*if (data.data.email && data.data.email !== "") {
-            console.log(data.data)
-            localStorage.setItem("email", data.data.email);
-          } else if (data.data.id) {
-            localStorage.setItem("id", data.data.id.toString())
-          }*/
+
+
+          this.router.navigateByUrl("/");
+
         }
       });
     }else{

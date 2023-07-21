@@ -11,6 +11,7 @@ export interface Order {
         }
       ],
       orderStatus: boolean,
+      order_status:string,
       shippingAddress: {
         city: string,
         fullAddress: string,

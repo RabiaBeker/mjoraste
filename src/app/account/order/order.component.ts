@@ -33,7 +33,8 @@ export class OrderComponent {
 
   key : String = "online";
 
-  orderList : Array<Order> = [];
+  trueOrderList : Order[];
+  falseOrderList : Order[];
 
   orderModel : OrderModel;
 
@@ -44,6 +45,8 @@ export class OrderComponent {
     private router: Router,
     private orderService : OrderService) {
       this.orderModel = new OrderModel;
+      this.trueOrderList = new Array<Order>;
+      this.falseOrderList = new Array<Order>;
   }
 
   displayedColumns:string[] = ['position','createdDate', 'id', 'productAmount', 'totalPrice', 'action'];
@@ -52,79 +55,28 @@ export class OrderComponent {
 
 
   ngOnInıt(){
-    this.userId =Number(localStorage.getItem('id'));
 
-    this.orderService.getOrders(this.userId).subscribe((data: any) => {
-
-      // this.orderList.push(data.data);
-
-      console.log(data.data);
-
-      for(let val of this.orderList){
-        console.log(val);
-      }
-
-      /*for(let i = 0 ; i<data.data.length; i++){
-        const orderItem: Order = data.data[i];
-        console.log(orderItem.orderCode);
-
-
-        let myMap = new Map<string, object>();
-
-        myMap.set('position',orderItem.id).set()
-
-      }*/
-
-
-      const list: Order[] = data.data;
-
-      this.dataSource = list.map((order, index) => {
-        //const amount = order.orderItems.
-        return {
-          position: index,
-          createdDate: order.orderDate,
-          id: ''+ order.orderCode,
-          productAmount: order.orderItems.length,
-          totalPrice: order.totalPrice,
-          action: 'cancel'
-        }
-      })
-
-
-
-
-    });
   }
 
   onlineOrders(){
 
+    this.trueOrderList = [];
+
     this.userId =Number(localStorage.getItem('id'));
 
     this.orderService.getOrders(this.userId).subscribe((data: any) => {
 
-      // this.orderList.push(data.data);
-
-      console.log(data.data);
-
-      for(let val of this.orderList){
-        console.log(val);
+      for(let val of data.data){
+        //console.log(val);
+        if(val['orderStatus'] != true){
+          //
+        }else{
+          val['order_status'] = "PREPARING"
+          this.trueOrderList.push(val);
+        }
       }
 
-      /*for(let i = 0 ; i<data.data.length; i++){
-        const orderItem: Order = data.data[i];
-        console.log(orderItem.orderCode);
-
-
-        let myMap = new Map<string, object>();
-
-        myMap.set('position',orderItem.id).set()
-
-      }*/
-
-
-      const list: Order[] = data.data;
-
-      this.dataSource = list.map((order, index) => {
+      this.dataSource = this.trueOrderList.map((order, index) => {
         //const amount = order.orderItems.
         return {
           position: index,
@@ -132,28 +84,52 @@ export class OrderComponent {
           id: ''+ order.orderCode,
           productAmount: order.orderItems.length,
           totalPrice: order.totalPrice,
-          action: 'cancel'
+          action: order.order_status
         }
       })
 
 
 
-
     });
 
-    /*let datas2 : PeriodicElement[]=[
-      {position: 1,createdDate:"11.22.70" ,id: 'Hydrogen', productAmount: 1, totalPrice: 1280, action:'cancel'},
-      {position: 2,createdDate:"11.22.70" , id: 'Helium', productAmount: 4, totalPrice: 1375, action:'cancel'},
-    ]
-
-    this.key="online"
-
-    //let dataSource:PeriodicElement[] = this.datas;
-    this.dataSource = datas2;*/
-
+    this.key = "online";
   }
 
   canceledOrders(){
+
+    this.falseOrderList  = [];
+
+    this.userId =Number(localStorage.getItem('id'));
+
+    this.orderService.getOrders(this.userId).subscribe((data: any) => {
+
+      for(let val of data.data){
+        //console.log(val);
+        if(val['orderStatus'] != true){
+          val['order_status'] = "CANCELED"
+          this.falseOrderList.push(val);
+        }else{
+          //
+        }
+      }
+
+      this.dataSource = this.falseOrderList.map((order, index) => {
+        //const amount = order.orderItems.
+        return {
+          position: index,
+          createdDate: order.orderDate,
+          id: ''+ order.orderCode,
+          productAmount: order.orderItems.length,
+          totalPrice: order.totalPrice,
+          action: order.order_status
+        }
+      })
+
+
+    });
+
+
+
     this.key="canceled"
 
   }

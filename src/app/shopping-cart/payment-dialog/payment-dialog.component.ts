@@ -13,6 +13,11 @@ export class PaymentDialogComponent {
   getCreditCardInfo(){
     localStorage.setItem('paymentId', '1')
     this.router.navigateByUrl("payment-detail")
-    console.log('rabia')
+
+  }
+  payCash(){
+    localStorage.setItem('paymentId', '2')
+    this.router.navigateByUrl("payment-detail")
+
   }
 }

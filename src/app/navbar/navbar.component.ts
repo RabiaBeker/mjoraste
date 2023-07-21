@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -8,23 +9,32 @@ import {Router} from "@angular/router";
 })
 export class NavbarComponent {
 
+
+  public component;
+
+  constructor(private router: Router) {
+    this.component = NavbarComponent;
+  }
+
   searchInput:string="";
 
   key:string="";
 
-  cartItemIdSize:number;
+  public static cartItemSize:number;
+
+
 
   ngOnInit(){
     if(localStorage.getItem('id')==null){
       this.key = "login";
-      this.cartItemIdSize = 0;
+      NavbarComponent.cartItemSize = 0;
     }else{
       this.key = "account";
+
     }
   }
 
-  constructor(private router: Router) {
-  }
+
   fromHomeToShoppingCard(){
     this.router.navigateByUrl("shoppingCart")
   }

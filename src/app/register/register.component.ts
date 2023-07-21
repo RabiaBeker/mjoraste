@@ -21,10 +21,10 @@ export class RegisterComponent {
           data.phoneNumber = data.phoneNumber.trim();
           data.name = data.name.trim();
           data.surName = data.surName.trim();
-        this.registerService.sendUserInfo(data).subscribe((data) => {
-            console.log(data);
-            this.router.navigateByUrl("/login")
-        })
+          this.registerService.sendUserInfo(data).subscribe((data) => {
+              console.log(data);
+              this.router.navigateByUrl("/login")
+          })
       }else{
         alert("Passwords do not match");
       }

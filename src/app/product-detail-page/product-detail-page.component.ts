@@ -3,6 +3,10 @@ import {CarouselImage} from "./carousel/carousel.component";
 import {ActivatedRoute, Router} from "@angular/router";
 import { ProductDetailService } from './product-detail.service';
 import { CartItemModel } from 'app/model/cardItemModel';
+import { NavbarComponent } from 'app/navbar/navbar.component';
+import { ApiResponse } from 'app/model/api-response';
+import { Card } from 'app/model/card';
+import { ShoppingCartService } from 'app/shopping-cart/shopping-cart.service';
 
 
 @Component({
@@ -19,11 +23,13 @@ export class ProductDetailPageComponent {
   public description?:string="";
   public name?:string="";
   public price?:number=0;
+  public remain?:number=0;
 
   constructor(
     private router: Router,
     private activatedRouter: ActivatedRoute,
-    private productDetailService: ProductDetailService
+    private productDetailService: ProductDetailService,
+    private shoppingCardService : ShoppingCartService
 
     ) {
       this.cardItemModel = new CartItemModel;
@@ -43,19 +49,21 @@ export class ProductDetailPageComponent {
 
     this.productDetailService.getProductsByProductId(this.productId).subscribe((data) => {
 
+        console.log(data.stock);
 
         this.description = data.description;
         this.name = data.name;
         this.price = data.price;
+        this.remain = data.stock;
 
         for(let i = 0; i < 2; i++){
 
           this.slides.push({src:"../../assets/images/"+data.images?.[i].imageUrl,alt:"nature"});
         }
 
-
-
     })
+
+
   }
 
   addToShoppingCart(){
@@ -69,12 +77,16 @@ export class ProductDetailPageComponent {
       this.cardItemModel.productId = this.productId;
       this.cardItemModel.quantity = this.numberOfProduct;
 
+      if(this.numberOfProduct > this.remain){
+        alert("there is not enough stock");
+      }else{
+        this.productDetailService.sendProductAndQuantity(this.cardItemModel).subscribe((data) => {
+
+          this.router.navigateByUrl('shoppingCart')
+        })
+      }
 
 
-      this.productDetailService.sendProductAndQuantity(this.cardItemModel).subscribe((data) => {
-
-        this.router.navigateByUrl('shoppingCart')
-      })
 
     }else{
       this.router.navigateByUrl("/login")
@@ -90,10 +102,10 @@ export class ProductDetailPageComponent {
   }
 
   increaseProductAmount(){
-    if(this.numberOfProduct < 3){
+    if(this.numberOfProduct < 5){
       this.numberOfProduct = this.numberOfProduct + 1;
     }else{
-      alert("You can add maximum 3 products in one order");
+      alert("You can add maximum 5 products in one order");
     }
 
   }

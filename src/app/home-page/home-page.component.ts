@@ -3,6 +3,11 @@ import {Router} from "@angular/router";
 import {Categories, HomePageService, Products} from "./home-page.service";
 import {Observable} from "rxjs";
 import {CarouselImage} from "../product-detail-page/carousel/carousel.component";
+import { NavbarComponent } from 'app/navbar/navbar.component';
+import { Card } from 'app/model/card';
+import { ShoppingCartService } from 'app/shopping-cart/shopping-cart.service';
+import {ApiResponse} from "../model/api-response";
+
 
 export const CATEGORIES = [
     {
@@ -27,24 +32,41 @@ export class HomePageComponent {
 
   public categoriesImageUrl: any  = []
 
-    constructor(private router: Router, private homePageService: HomePageService) {
+    constructor(private router: Router, private homePageService: HomePageService,private shoppingCardService : ShoppingCartService,) {
   }
 
   catOneImageUrl : string = "";
 
   ngOnInit(){
 
+    let id:number = Number(localStorage.getItem('id'));
+
+    let size:number=0;
+
+    this.shoppingCardService.getCart(id).subscribe((data: ApiResponse<Card>) => {
+
+      console.log(data.data.cartItems.length);
+      size = data.data.cartItems.length;
+      NavbarComponent.cartItemSize = size;
+    });
+
+    //console.log(size);
+    //NavbarComponent.cartItemIdSize = 1;
+
+
+
     this.homePageService.getAllCategories().subscribe((data:Categories) => {
       this.categoriesList = data.data;
 
-    console.log(this.categoriesList);
     })
+
+
 
     this.homePageService.getTopProducts().subscribe((data:Products) => {
 
       this.productList = data.data.slice(0,6);
 
-      console.log(this.productList);
+
 
     })
 

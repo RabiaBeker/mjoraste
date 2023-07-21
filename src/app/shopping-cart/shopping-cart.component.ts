@@ -8,6 +8,7 @@ import { ShoppingCartItem } from 'app/model/shoppingCartItem';
 import { ApiResponss } from 'app/model/api-responss';
 import { PaymentDialogComponent } from './payment-dialog/payment-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { NavbarComponent } from 'app/navbar/navbar.component';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -44,7 +45,16 @@ export class ShoppingCartComponent {
 
       this.cartItemsList = data.data.cartItems;
 
+      let id:number = Number(localStorage.getItem('id'));
 
+      let size:number=0;
+
+      this.shoppingCardService.getCart(id).subscribe((data: ApiResponse<Card>) => {
+
+        console.log(data.data.cartItems.length);
+        size = data.data.cartItems.length;
+        NavbarComponent.cartItemSize = size;
+      });
 
     });
   }
