@@ -16,25 +16,6 @@
           <mat-card-subtitle>{{cartItem.name}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <p class="product-price">1000TL</p>
-          <button class="product-delete-button" (click)="deleteFromStorage()">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-card-content>
-      </div>
-    </mat-card>
-    <mat-card>
-      <div class="select-image">
-        <img src="./assets/mjoraste-img-1.jpg" alt="">
-      </div>
-      <div class="shoppingcart-content">
-        <mat-card-header>
-          <mat-card-title>Midi Elbise</mat-card-title>
-          <mat-card-subtitle>Elastik düz yaka elbise. Fiyonklu ince askılı. Buruşuk görünümlü detaylı.</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <p class="product-price">1000TL</p>
-          <button class="product-delete-button" (click)="deleteFromStorage()">
           <p class="product-price">{{cartItem.quantity}}  x {{cartItem.price}}</p>
           <button class="product-delete-button"  (click)="deleteFromStorage(cartItem.id)">
             <mat-icon>delete</mat-icon>
@@ -46,7 +27,10 @@
     <div>
       <p>Toplam fiyat: {{totalPrice}} </p>
     </div>
+
+
     <button (click)="openPaymentDialog()" mat-button class="proceedCheckoutButton">Proceed Checkout</button>
+
   </div>
 
 

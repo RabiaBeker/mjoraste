@@ -3,7 +3,6 @@ import {AdminPageService} from "../admin-page.service";
 import {GetAllProductResponse} from "../../model/getAllProductResponse";
 import {AllProductService} from "./all-product.service";
 import {MatDialog} from "@angular/material/dialog";
-import {PaymentDialogComponent} from "../../shopping-cart/payment-dialog/payment-dialog.component";
 import {ProductDialogComponent} from "./product-dialog/product-dialog.component";
 
 @Component({
@@ -14,7 +13,7 @@ import {ProductDialogComponent} from "./product-dialog/product-dialog.component"
 export class AllProductComponent {
 
   allProduct?: GetAllProductResponse[];
-  constructor(private allProductService: AllProductService, private dialogRef: MatDialog) {
+  constructor(private adminPageService: AdminPageService,private allProductService: AllProductService, private dialogRef: MatDialog) {
   }
 
   ngOnInit(){
@@ -28,8 +27,7 @@ export class AllProductComponent {
   openProductDialog(){
     this.dialogRef.open(ProductDialogComponent)
   }
-  constructor(private adminPageService: AdminPageService) {
-  }
+
   getAllProduct(){
     this.adminPageService.getProduct().subscribe((data) => {
       console.log(data);

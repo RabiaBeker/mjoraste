@@ -38,8 +38,7 @@ export class ProductDetailPageComponent {
 
 
   numberOfProduct : number = 1;
-  constructor(private router: Router,private activatedRouter: ActivatedRoute) {
-  }
+
   userId = localStorage.getItem("id");
 
   public slides: CarouselImage[] = []
@@ -47,14 +46,7 @@ export class ProductDetailPageComponent {
   ngOnInit() {
     this.productId = Number(this.activatedRouter.snapshot.paramMap.get('id'));
 
-  sizes: string[] = [
-    "XS", "S", "M", "L"
-  ]
-  public slides: CarouselImage[] = [
-    { src: "https://picsum.photos/id/237/200/300", alt: "nature1"},
-    { src: "https://picsum.photos/seed/picsum/200/300", alt: "nature2"},
-    { src: "https://picsum.photos/200/300?grayscale", alt: "nature3"}
-  ]
+
     this.productDetailService.getProductsByProductId(this.productId).subscribe((data) => {
 
         console.log(data.stock);
@@ -73,6 +65,7 @@ export class ProductDetailPageComponent {
 
 
   }
+
   addToShoppingCart(){
 
 
@@ -98,6 +91,7 @@ export class ProductDetailPageComponent {
     }else{
       this.router.navigateByUrl("/login")
     }
+
   }
 
   reduceProductAmount(){
@@ -115,7 +109,7 @@ export class ProductDetailPageComponent {
     }
 
   }
+
+
+
 }
-
-
-

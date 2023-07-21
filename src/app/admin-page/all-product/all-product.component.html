@@ -5,11 +5,6 @@
       <button (click)="openProductDialog()" mat-button>
         <mat-icon>add</mat-icon>
       </button>
-<app-navbar></app-navbar>
-<div style=" width: 100%; height: 100%;">
-  <div style=" width: 80%; height:100%; margin-left: auto; margin-right: auto;">
-    <div style="margin-top: 50px;">
-      <h2 style="text-align: center; font-size: 22px; font-family: serif; "> <u>All Product</u> </h2>
     </div>
     <ul *ngFor="let product of  allProduct" >
         <li id="{{product.id}}" style=" list-style-type: none; float: left; margin: 10px; margin-left: 35px;">

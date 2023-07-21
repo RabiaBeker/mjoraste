@@ -11,7 +11,8 @@ import {GetAllProductResponse} from "../model/getAllProductResponse";
 export class AdminPageComponent {
   key: string;
   isAdmin = localStorage.getItem('isAdmin')
-  constructor(private router:Router) {
+
+  constructor(private router:Router,private adminPageService: AdminPageService) {
   }
   ngOnInit(){
     if(this.isAdmin === 'false'){
@@ -27,18 +28,16 @@ export class AdminPageComponent {
   }
   getAllOrders(){
     this.key = "all-orders"
-  constructor(private adminPageService: AdminPageService) {
   }
 
   getAllProductfromAllProductPage(){
     console.log("rabia");
   }
-  getAllOrders(){
 
-  }
   getAllUsers(){
 
   }
   goToProductPage(){
   }
 }
+
