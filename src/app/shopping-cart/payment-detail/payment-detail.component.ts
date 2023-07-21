@@ -20,11 +20,11 @@ export class PaymentDetailComponent {
   paymentId = localStorage.getItem('paymentId')
 
   firstFormGroup = this._formBuilder.group({
-    cardNumber: ['', Validators.required],
+    cardNumber: ['', [Validators.required, Validators.maxLength(16)]],
     cardOwner: ['', Validators.required],
-    mm: ['', Validators.required],
-    vv: ['', Validators.required],
-    cvv: ['', Validators.required],
+    mm: ['', [Validators.required, Validators.maxLength(2)]],
+    vv: ['', [Validators.required, Validators.maxLength(2)]],
+    cvv: ['', [Validators.required, Validators.maxLength(3)]],
   });
   secondFormGroup = this._formBuilder.group({
     fullAddress: ['', Validators.required],
@@ -43,6 +43,7 @@ export class PaymentDetailComponent {
       paymentTypeId: 1,
       town: data.town
     }
+
     this.paymentDetailService.sendUserAddressInfo(payload).subscribe((response) => {
 
 

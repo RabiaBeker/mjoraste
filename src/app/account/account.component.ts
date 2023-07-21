@@ -13,18 +13,15 @@ export class AccountComponent {
 
   constructor(private router: Router ) {
   }
-
   key : String = "orders";
 
   ngOnInit(){
 
     this.goToOrders();
   }
-
   goToOrders(){
     this.key = "orders";
   }
-
   goToUser(){
     this.key = "user";
   }

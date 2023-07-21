@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {PaymentDialogComponent} from "./payment-dialog/payment-dialog.component";
 import { ShoppingCartService } from './shopping-cart.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Card } from 'app/model/card';
@@ -17,6 +19,8 @@ import { NavbarComponent } from 'app/navbar/navbar.component';
 })
 export class ShoppingCartComponent {
 
+  constructor(private dialogRef: MatDialog) {
+  }
   public totalPrice?:number=0;
 
   specifyCartModel : SpecifyCartItemModel;
@@ -61,6 +65,9 @@ export class ShoppingCartComponent {
   openPaymentDialog(){
     this.dialogRef.open(PaymentDialogComponent)
   }
+  openPaymentDialog(){
+    this.dialogRef.open(PaymentDialogComponent)
+  }
 
   deleteFromStorage(cartItemId : number){
     this.shoppingCardService.deleteCart(cartItemId).subscribe((data: ApiResponss) => {
@@ -68,8 +75,5 @@ export class ShoppingCartComponent {
       this.ngOnInit();
     });
   }
-
-  goToShoppingCart(){
-
   }
 }

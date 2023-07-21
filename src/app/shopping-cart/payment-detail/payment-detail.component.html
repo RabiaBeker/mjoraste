@@ -5,7 +5,7 @@
       <form [formGroup]="firstFormGroup" (ngSubmit)="sendCardInfo(firstFormGroup.value)">
         <ng-template matStepLabel>Fill out your credit-card information</ng-template>
         <mat-form-field>
-          <input matInput formControlName="cardNumber" placeholder="Card Number">
+          <input matInput formControlName="cardNumber" placeholder="Card Number" maxlength="16">
         </mat-form-field>
         <mat-form-field>
           <input matInput formControlName="cardOwner" placeholder="Card Owner">

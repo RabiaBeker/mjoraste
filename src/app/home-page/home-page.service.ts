@@ -7,6 +7,7 @@ import {env} from "../../environments/env";
   providedIn: 'root'
 })
 export class HomePageService {
+  getAboutTextUrl = env.getAboutText
   getAllCategoriesUrl = env.getAllCategoriesUrl;
   getProductsUrl = env.getProducts;
 
@@ -15,11 +16,12 @@ export class HomePageService {
   getAllCategories(): Observable<Categories> {
     return this.http.get<Categories>(this.getAllCategoriesUrl)
   }
-
+  getAboutText(): Observable<Text[]>{
+    return this.http.get<Text[]>(this.getAboutTextUrl)
+  }
   getTopProducts(): Observable<Products>{
     return this.http.get<Products>(this.getProductsUrl);
   }
-
 }
 export interface Categories{
   data: [

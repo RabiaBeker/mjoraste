@@ -14,7 +14,7 @@ export class PaymentDetailService {
   constructor(private http: HttpClient) { }
 
   sendUserAddressInfo(data: OrdersInfoRequest): Observable<UserAddressResponse>{
-    console.log("here");
+
     let userId = localStorage.getItem('id');
     return this.http.post<UserAddressResponse>(this.baseUrl + `/purchase/${userId}`, data)
   }

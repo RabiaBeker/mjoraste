@@ -4,11 +4,11 @@ import {env} from "../../environments/env";
 import {map, Observable} from "rxjs";
 import {GetAllProductResponse} from "../model/getAllProductResponse";
 import {ApiResponse} from "../model/api-response";
-
 @Injectable({
   providedIn: 'root'
 })
 export class AdminPageService {
+
   baseUrl = env.apiUrl + '/api/products'
 
   constructor(private http: HttpClient) { }

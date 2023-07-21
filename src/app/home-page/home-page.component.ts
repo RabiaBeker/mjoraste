@@ -15,7 +15,6 @@ export const CATEGORIES = [
       name: 'Siyah Elbise'
     }
   ]
-
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -25,6 +24,7 @@ export class HomePageComponent {
 
 
   public categoriesList?: any;
+  public text: string;
 
   public productList?: any;
 
@@ -34,11 +34,16 @@ export class HomePageComponent {
 
     constructor(private router: Router, private homePageService: HomePageService,private shoppingCardService : ShoppingCartService,) {
   }
-
-  catOneImageUrl : string = "";
-
+  
   ngOnInit(){
 
+    this.homePageService.getAllCategories().subscribe((data:Categories) => {
+      this.categoriesList = data.data;
+
+     console.log(this.categoriesList);
+    })
+    this.homePageService.getAboutText().subscribe((data) => {
+      
     let id:number = Number(localStorage.getItem('id'));
 
     let size:number=0;
@@ -66,27 +71,27 @@ export class HomePageComponent {
 
       this.productList = data.data.slice(0,6);
 
-
-
     })
 
 
   }
-
+      console.log(data[0])
+    })
+  }
   fromCategoriesSectiontoProduct(id:number){
     this.router.navigateByUrl(`products/categoryId/${id}`)
   }
-
   fromCategoriesSectiontoProductDetail(id:number){
     this.router.navigateByUrl(`products/detail/productId/${id}`)
   }
-
 }
-
 export interface categoriesDetail{
   id:number,
   name:string
 }
 
-
+export interface Text{
+  id: string,
+  aboutText: string;
+}
 

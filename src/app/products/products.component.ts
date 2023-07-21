@@ -24,10 +24,7 @@ export class ProductsComponent {
 
     this.route.params.subscribe({
       next: (param) => {
-
-
         key = param['searchInput'];
-
         if (key != undefined){
           console.log(param['searchInput']);
           //arama kelimesi ile backende sorgu gönder ve products component içinde döndür
@@ -44,17 +41,14 @@ export class ProductsComponent {
           this.productsService.getProductsByCategoryId(categoryId).subscribe((data) => {
             console.log(data);
             this.productsByCategoryId = data
+            console.log(this.productsByCategoryId)
             if (data && data.length > 0) {
               this.categoryName = data[0].categoryName
             }
           })
         }
-
-
       }
     })
-
-
   }
 
   goToProductDetail(id:any){

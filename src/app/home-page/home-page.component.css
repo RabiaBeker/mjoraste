@@ -53,14 +53,16 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
-
+  overflow: hidden;
   transition: width 0.3s ease-in;
 }
-.categories-section:hover {
-  width: 21%;
-  border: 1px solid #f3f3f3;
+/*.categories-section:hover {*/
+/*  width: 21%;*/
+/*  border: 1px solid #f3f3f3;*/
+/*}*/
+.categories-section span img:hover{
+  transition: all 0.5s ease-in;
 }
-
 .content-item-title{
   font-size: 25px;
   font-family: serif;

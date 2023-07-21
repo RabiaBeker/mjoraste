@@ -43,19 +43,34 @@ export class LoginComponent {
           alert("your email or password is wrong")
           this.router.navigateByUrl("/login")
         } else {
+          
+          if (data.data.isAdmin === true){
+            this.router.navigateByUrl('admin');
+            let id:any = data.data.id;
+            let email: any = data.data.email
+            let isAdmin: any = data.data.isAdmin
 
-          let id:any = data.data.id;
+            localStorage.setItem("email", email)
+            localStorage.setItem("id",id);
+            localStorage.setItem("isAdmin", isAdmin)
 
-          localStorage.setItem("id",id);
-          localStorage.setItem("email",data.data.email);
-          localStorage.setItem("name",data.data.name);
-          localStorage.setItem("surname",data.data.surName);
-          localStorage.setItem("phoneNumber",data.data.phoneNumber);
+          }else {
+            let id:any = data.data.id;
+            let email: any = data.data.email
+            let isAdmin: any = data.data.isAdmin
 
+            localStorage.setItem("email", email)
+            localStorage.setItem("id",id);
+            localStorage.setItem("isAdmin", isAdmin)
+            localStorage.setItem("name",data.data.name);
+            localStorage.setItem("surname",data.data.surName);
+            localStorage.setItem("phoneNumber",data.data.phoneNumber);
+            
+            this.router.navigateByUrl("/");
+          }
+          
 
-
-          this.router.navigateByUrl("/");
-
+          
         }
       });
     }else{

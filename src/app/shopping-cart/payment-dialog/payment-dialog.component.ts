@@ -13,7 +13,6 @@ export class PaymentDialogComponent {
   getCreditCardInfo(){
     localStorage.setItem('paymentId', '1')
     this.router.navigateByUrl("payment-detail")
-
   }
   payCash(){
     localStorage.setItem('paymentId', '2')
