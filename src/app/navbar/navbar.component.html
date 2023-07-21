@@ -11,10 +11,13 @@
     </div>
     <div class="account-navigater-wrapper">
       <button mat-button style="color: black; background-color: #fff; margin-right: 0.5rem" class="shoppingCard-button" (click)="fromHomeToShoppingCard()">
-        <div matBadge="1"  matBadgeColor="warn" matBadgeOverlap="false">Shopping Cart</div>
+        <div matBadge="{{component.cartItemSize}}"  matBadgeColor="warn" matBadgeOverlap="false">SHOPPING CART</div>
       </button>
-      <button mat-button style="color: black; background-color: #fff" class="account-button" (click)="fromHomeToAccount()">
-        Account
+      <button *ngIf="key=='account'" mat-button style="color: black; background-color: #fff" class="account-button" (click)="fromHomeToAccount()">
+        ACCOUNT
+      </button>
+      <button *ngIf="key=='login'" mat-button style="color: black; background-color: #fff" class="account-button" (click)="fromHomeToLogin()">
+        LOG IN
       </button>
     </div>
   </div>

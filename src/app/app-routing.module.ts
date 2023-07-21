@@ -44,7 +44,6 @@ const routes: Routes = [
   {
     path: "admin", component: AdminPageComponent
   }
-
 ];
 
 @NgModule({

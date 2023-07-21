@@ -11,10 +11,23 @@ export class UserComponent {
   constructor(private router: Router) {
   }
 
-  logOut(){
-    console.log("here")
-    localStorage.clear();
+  name:string="";
+  surName:string="";
+  email:string="";
+  phoneNumber:string="";
 
+  ngOnInit(){
+    this.name = localStorage.getItem('name');
+    console.log(localStorage.getItem('name'));
+    console.log(this.name);
+    this.surName = localStorage.getItem('surname');
+    this.email = localStorage.getItem('email');
+    this.phoneNumber = localStorage.getItem('phoneNumber');
+  }
+
+  logOut(){
+
+    localStorage.clear();
     this.router.navigateByUrl("/");
   }
 }

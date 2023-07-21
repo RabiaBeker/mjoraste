@@ -5,15 +5,15 @@
         <button (click)="goToShoppingCart()" class="button">SHOPPING CART</button>
       </div>
   </div>
-  <div class="card">
-    <mat-card>
+  <div class="card" *ngIf="cartItemsList.length>0" >
+    <mat-card *ngFor="let cartItem of cartItemsList">
       <div class="select-image">
-        <img src="./assets/mjoraste-img-1.jpg" alt="">
+        <img src="./assets/images/{{cartItem.images[0].imageUrl}}" alt="">
       </div>
       <div class="shoppingcart-content">
         <mat-card-header>
-          <mat-card-title>Midi Elbise</mat-card-title>
-          <mat-card-subtitle>Elastik düz yaka elbise. Fiyonklu ince askılı. Buruşuk görünümlü detaylı.</mat-card-subtitle>
+          <mat-card-title>{{cartItem.name}}</mat-card-title>
+          <mat-card-subtitle>{{cartItem.name}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
           <p class="product-price">1000TL</p>
@@ -35,15 +35,19 @@
         <mat-card-content>
           <p class="product-price">1000TL</p>
           <button class="product-delete-button" (click)="deleteFromStorage()">
+          <p class="product-price">{{cartItem.quantity}}  x {{cartItem.price}}</p>
+          <button class="product-delete-button"  (click)="deleteFromStorage(cartItem.id)">
             <mat-icon>delete</mat-icon>
           </button>
         </mat-card-content>
       </div>
     </mat-card>
+
     <div>
-      <p>Toplam fiyat: </p>
+      <p>Toplam fiyat: {{totalPrice}} </p>
     </div>
     <button (click)="openPaymentDialog()" mat-button class="proceedCheckoutButton">Proceed Checkout</button>
   </div>
-</div>
 
+
+</div>

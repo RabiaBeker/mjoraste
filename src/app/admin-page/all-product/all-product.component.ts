@@ -28,5 +28,12 @@ export class AllProductComponent {
   openProductDialog(){
     this.dialogRef.open(ProductDialogComponent)
   }
-
+  constructor(private adminPageService: AdminPageService) {
+  }
+  getAllProduct(){
+    this.adminPageService.getProduct().subscribe((data) => {
+      console.log(data);
+      this.allProduct = data;
+    })
+  }
 }

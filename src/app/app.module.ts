@@ -35,6 +35,7 @@ import { AllProductComponent } from './admin-page/all-product/all-product.compon
 import { AllOrdersComponent } from './admin-page/all-orders/all-orders.component';
 import { ProductDialogComponent } from './admin-page/all-product/product-dialog/product-dialog.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import { ProductDialogComponent } from './admin-page/all-product/product-dialog/
     AllProductComponent,
     AllOrdersComponent,
     ProductDialogComponent,
+
   ],
   imports: [
     BrowserModule,

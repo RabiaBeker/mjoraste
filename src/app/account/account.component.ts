@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
+import { OrderComponent } from './order/order.component';
 
 @Component({
   selector: 'app-account',
@@ -8,16 +9,21 @@ import {Router} from "@angular/router";
 })
 export class AccountComponent {
 
-  constructor(private router: Router) {
+  orderComponent:OrderComponent;
+
+  constructor(private router: Router ) {
   }
   key : String = "orders";
+
+  ngOnInit(){
+
+    this.goToOrders();
+  }
   goToOrders(){
     this.key = "orders";
-    console.log("orders")
   }
   goToUser(){
     this.key = "user";
-    console.log("user");
   }
 
 

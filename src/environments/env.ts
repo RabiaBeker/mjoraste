@@ -9,6 +9,8 @@ export const env = {
   getAllOlders: 'http://localhost:1907/api/orders/getAll',
   sendProductData: 'http://localhost:1907/api/products',
   getAboutText: 'http://localhost:1907/api/about'
+  getOrdersUrl:'http://localhost:1907/api/orders/findByUser?userId=',
+  getProducts: 'http://localhost:1907/api/products'
 }
 
 

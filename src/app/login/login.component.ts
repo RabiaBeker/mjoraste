@@ -21,8 +21,15 @@ export class LoginComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private loginService: LoginServiceService) {
+    private loginService: LoginServiceService,
+    ) {
     this.loginRequestModel = new LoginRequestModel;
+  }
+
+  ngOnInit(){
+    if(localStorage.getItem('id') != null){
+      this.router.navigateByUrl('');
+    }
   }
 
   onSubmit() {
@@ -31,14 +38,12 @@ export class LoginComponent {
       this.loginRequestModel.email = this.email;
       this.loginRequestModel.password = this.password;
 
-      console.log(this.loginRequestModel);
       this.loginService.login(this.loginRequestModel).subscribe((data: ApiResponse<LoginResponse>) => {
         if(data.data === null){
           alert("your email or password is wrong")
           this.router.navigateByUrl("/login")
         } else {
-          console.log(data)
-
+          
           if (data.data.isAdmin === true){
             this.router.navigateByUrl('admin');
             let id:any = data.data.id;
@@ -50,8 +55,6 @@ export class LoginComponent {
             localStorage.setItem("isAdmin", isAdmin)
 
           }else {
-            this.router.navigateByUrl("/");
-
             let id:any = data.data.id;
             let email: any = data.data.email
             let isAdmin: any = data.data.isAdmin
@@ -59,7 +62,15 @@ export class LoginComponent {
             localStorage.setItem("email", email)
             localStorage.setItem("id",id);
             localStorage.setItem("isAdmin", isAdmin)
+            localStorage.setItem("name",data.data.name);
+            localStorage.setItem("surname",data.data.surName);
+            localStorage.setItem("phoneNumber",data.data.phoneNumber);
+            
+            this.router.navigateByUrl("/");
           }
+          
+
+          
         }
       });
     }else{
